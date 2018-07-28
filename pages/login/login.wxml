@@ -1,0 +1,13 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+  </view>
+  <view class="userName"> 
+    <open-data type="userNickName"></open-data>
+  </view>
+  <view class="usermotto">
+                <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+                <view wx:else>请升级微信版本</view>
+            </view>
+</view>

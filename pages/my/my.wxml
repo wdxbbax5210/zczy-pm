@@ -1,0 +1,36 @@
+<!--pages/my/my.wxml-->
+<view class="my main">
+  <view class="myHeader">
+    <view wx:if="{{!showRegister}}" class="t-FBH">
+      <view class="userinfo">
+        <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+      </view>
+      <view class="userName t-FBH">
+        <open-data type="userNickName"></open-data>
+        <!-- {{showRegister ? '': 'hide'}} -->
+      </view>
+    </view>
+    <view wx:else class="register-btn">
+      <button class='register' bindtap='goToRegitser'>点击注册</button>
+    </view>
+  </view>
+  <view class="list-wrap">
+    <view class="list-item">
+      <wxc-list wx:if="(userInfo.userType != 0 && userInfo.userType != 1)" desc="用户信息审核" class="item" icon="check" icon-color="#69A0DD" title="用户审核" bind:click='getApproveList'></wxc-list>
+      <wxc-list class="item" icon="feedback" icon-color="#69A0DD" mode="none" desc="暂未开放" title="意见反馈"></wxc-list>
+    </view>
+  </view>
+
+  <!-- <view class="wrap-common">
+  </view> -->
+  <!-- <view class="wrap-common">
+    <view class="item {{(userInfo.userType == 0 || userInfo.userType == 1) ? 'hide' : ''}}" bindtap='getApproveList'>
+      <view class="title">用户信息审核</view>
+      <image class="img" src="../../images/arrow-right.png"></image>
+    </view> -->
+  <!-- <view class="item" bindtap='goToFeeEntry'>
+      <view class="title">费用录入</view>
+      <image class="img" src="../../images/arrow-right.png"></image>
+    </view> -->
+  <!-- </view> -->
+</view>

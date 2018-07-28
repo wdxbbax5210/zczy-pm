@@ -1,0 +1,96 @@
+<!--pages/addFeeRecord/addFeeRecord.wxml-->
+<view class='main'>
+  <view class="section">
+    <view class="container">
+      <view class="list-wrap" wx:if="{{!recordId}}">
+        <view class="list-item">
+          <wxc-list title="选择用户" mode="normal" desc="{{userName ? userName : '请选择'}}" bind:click="onSelectUser"></wxc-list>
+        </view>
+      </view>
+      <view class="input-wrap">
+        <wxc-input type="text" mode="normal" title="单元编号" placeholder="选择用户回填单元编号" disabled="true" value="{{unitNumber}}"></wxc-input>
+      </view>
+      <view class="list-wrap">
+        <view class="list-item">
+          <picker mode="date" value="{{date}}" fields="month" start="2015-09" bindchange="onDateChange">
+            <wxc-list title="所属月份" mode="normal" desc="{{date ? date : '请选择'}}"></wxc-list>
+          </picker>
+        </view>
+      </view>
+      <view class="input-wrap">
+        <wxc-input type="number" mode="none" title="应收金额" placeholder="请输入应收金额" value="{{amount}}" bindinput='onAmountChange'></wxc-input>
+      </view>
+      <view class="button-large-wrap">
+        <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bindtap="onConfirm"></wxc-button>
+      </view>
+      <wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'信息填写不完整'}}" confirm-text="知道了" bindconfirm="btnConfirm">
+      </wxc-toast>
+    </view>
+  </view>
+</view>
+
+<!-- <view class=" main">
+  <view class="section">
+    <view class="item " wx:if="{{!recordId}}">
+      <view 
+        class="title" 
+        bindtap='onSelectUser'
+        >
+        选择用户
+      </view>
+      <view>{{userName ? userName : "请选择"}}</view>
+      <image class="img" src="../../images/arrow-right.png"></image>
+    </view>
+    <view class="item " >
+      <view class="title">单元编号</view>
+      <input 
+        type="text" 
+        class="input" 
+        placeholder='请输入' 
+        value="{{unitNumber}}" 
+        bindinput='onUnitChange'
+        />
+    </view>
+    <picker 
+      mode="date" 
+      value="{{date}}" 
+      fields="month" 
+      start="2015-09"  
+      bindchange="onDateChange"
+      >
+      <view class="item " >
+        <view class="title">
+          所属月份
+        </view>
+        <view>{{date}}</view>
+        <image class="img" src="../../images/arrow-right.png"></image>
+      </view>
+    </picker>
+    <view class="item " >
+      <view class="title">应收金额</view>
+      <input 
+        type="text" 
+        class="input" 
+        placeholder='请输入' 
+        value="{{amount}}" 
+        bindinput='onAmountChange'
+        />
+    </view>
+  </view>
+   <button 
+    class="btn-login t-FB1 " 
+    type='primary' 
+    bindtap="onConfirm"
+    >
+    保存
+    </button>
+    <wxc-toast
+      class="wxc-dialog"
+      is-show="{{$toast.show}}"
+      text="{{message?message:'信息填写不完整'}}"
+      confirm-text="知道了" 
+      bindconfirm="btnConfirm"
+    >
+    </wxc-toast>
+</view>
+ -->

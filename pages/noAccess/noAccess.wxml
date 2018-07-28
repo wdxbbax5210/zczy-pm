@@ -1,0 +1,5 @@
+<!--pages/noAccess/noAccess.wxml-->
+<view class="outer"> 
+  <image src="../../images/no-data.png" class="noAccess"></image>
+</view>
+<view class="no-access">您的登录申请还未审核通过，请耐心等待。</view>

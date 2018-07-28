@@ -1,0 +1,26 @@
+/* pages/record/record.wxss */
+.section {
+  background-color: #fff;
+  padding: 24rpx;
+}
+.input {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  color: 333;
+  border: 1px solid #ededed;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  padding: 0 24rpx;
+}
+.item {
+  border-top: none;
+}
+.btn-login {
+  height:88rpx;
+  line-height:88rpx;
+  font-size:32rpx;
+  color: #fff;
+  margin: 0 30rpx;
+  margin-top: 30rpx;
+}

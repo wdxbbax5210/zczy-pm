@@ -1,0 +1,65 @@
+<!--pages/approveList/approvelist.wxml-->
+<view>
+  <view class="tab t-FBH">
+    <view class="tab-item t-FB1 {{userType == 0 ? 'active':''}}" data-active="0" bindtap='onChangeTab' wx:if="{{myUserType > 1 }}">
+      待审核
+    </view>
+    <view class="tab-item t-FB1 {{userType == 1 ? 'active':''}}" data-active="1" bindtap='onChangeTab' wx:if="{{myUserType > 1 }}">
+      普通用户
+    </view>
+    <view class="tab-item t-FB1 {{userType == 7 ? 'active':''}}" data-active="7" bindtap='onChangeTab' wx:if="{{myUserType > 7 }}">
+      普通员工
+    </view>
+    <view class="tab-item t-FB1 {{userType == 8 ? 'active':''}}" data-active="8" bindtap='onChangeTab' wx:if="{{myUserType > 8 }}">
+      管理员
+    </view>
+  </view>
+  <scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{list.length}}" class="scroll-view container">
+    <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
+        <view class="feed-item">
+          <view class="feed-source">
+            <a class="">
+              <view class="avatar">
+                <image src="{{item.avatarUrl}}"></image>
+              </view>
+              <text>单元：{{item.unitNumber}}</text>
+              <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
+            </a>
+            <picker class="item-more" bindchange="userVerify" range-key='name' range="{{buttonByUserType}}" data-id="{{item.id}}" data-item="{{item}}">
+              <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
+            </picker>
+          </view>
+          <view class="feed-content">
+            <view class="question">
+              <a class="question-link">
+                <text>性别:{{item.gender ? "未知": (item.gender == 1 ? "男":"女")}}</text>
+                <text style='margin-left:15rpx;'>地区:{{item.province}}</text>
+                <text style='margin-left:15rpx;'>手机:{{item.phoneNumber}}</text>
+              </a>
+            </view>
+            <view class="answer-body">
+              <view>
+                <text class="answer-txt">用户类型:{{item.userType == 0 ? "待审核":(item.userType == 1 ? "普通用户":(item.userType == 7 ? "普通员工":(item.userType == 8 ? "管理员":"超级管理员")))}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    
+    <!-- <view class="user-list" wx:for="{{list}}" wx:for-index="index" wx:key="{{item.id}}">
+      <view class="user-item t-FBH">
+        <view class="name t-FB1">{{item.nickName}}</view>
+        <view class="operate-btn {{userType == 1 || myUserType < 7 ?'hide':''}}" bindtap='userVerify' data-type="{{1}}" data-item="{{item}}">
+          设为普通用户
+        </view>
+        <view class="operate-btn {{userType == 7 || myUserType < 8?'hide':''}}" bindtap='userVerify' data-type="{{7}}" data-item="{{item}}">
+          设为普通员工
+        </view>
+        <view class="operate-btn {{userType == 8 || myUserType < 9 ?'hide':''}}" data-type="{{8}}" data-item="{{item}}" bindtap='userVerify'>
+          设为管理员
+        </view>
+      </view>
+    </view> -->
+  </scroll-view>
+  <view wx:else class="no-data">暂无数据</view>
+</view>

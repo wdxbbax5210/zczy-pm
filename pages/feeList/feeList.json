@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wxc-toast": "../../dist/packages/@minui/wxc-toast/dist/index",
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index",
+    "wxc-icon": "../../dist/packages/@minui/wxc-icon/dist/index",
+    "wxc-search": "../../dist/packages/@minui/wxc-search/dist/index",
+    "wxc-flex": "../../dist/packages/@minui/wxc-flex/dist/index",
+    "wxc-tab": "../../dist/packages/@minui/wxc-tab/dist/index",
+    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
+    "wxc-list": "../../dist/packages/@minui/wxc-list/dist/index"
+  }
+}

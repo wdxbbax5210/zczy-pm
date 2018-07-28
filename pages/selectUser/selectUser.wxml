@@ -1,0 +1,37 @@
+<!--pages/selectUser/selectUser.wxml-->
+<view class="searchTop">
+  <input 
+    type="text" 
+    class="input" 
+    placeholder='搜索' 
+    value="{{userName}}" 
+    bindinput='onNameChange'
+    />
+</view>
+<scroll-view 
+  scroll-y 
+  style="height: auto;" 
+  bindscrolltoupper="upper" 
+  bindscrolltolower="lower" 
+  bindscroll="scroll" 
+  scroll-into-view="{{toView}}" 
+  scroll-top="{{scrollTop}}"
+  wx:if="{{userList.length}}"
+  >
+  <view 
+    class="userlist"
+    wx:for="{{userList}}"
+    wx:for-index="index" 
+    wx:key="{{item.id}}"
+    >
+    <view 
+      class="itemName" 
+      bindtap='onSelectUser'
+      data-id="{{item.id}}"
+      data-name="{{item.nickName}}"
+      >
+      {{item.nickName}}
+    </view>
+  </view>  
+</scroll-view>
+<view wx:else class="no-data">搜索没有结果</view>

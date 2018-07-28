@@ -1,0 +1,50 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.main {
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  background-color: #F9F9F9;
+  -webkit-overflow-scrolling: touch;
+}
+.wrap-common {
+  margin-top: 24rpx;
+  border-bottom: 1rpx solid #EDEDED;
+}
+.item {
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #EDEDED;
+  padding: 0 12rpx;
+  font-size: 32rpx;
+  display: flex;
+}
+.hide {
+  display: none;
+}
+.img {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 19rpx;
+}
+.title {
+  color: #4A4A4A;
+  flex:1;
+}
+.t-FBH{
+  display: flex;
+}
+.t-FB1 {
+  flex: 1;
+}

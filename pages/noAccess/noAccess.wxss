@@ -1,0 +1,17 @@
+/* pages/noAccess/noAccess.wxss */
+.no-access {
+  font-size:28rpx;
+  color: #666;
+  margin-top: 30rpx;
+  text-align: center;
+}
+.noAccess {
+  width:260rpx;
+  margin:0 auto;
+  height:260rpx;
+  margin-top:220rpx;
+}
+.outer {
+  text-align: center;
+  margin-bottom: 40rpx;
+}

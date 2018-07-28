@@ -1,0 +1,39 @@
+<!--pages/index/index.wxml-->
+<swiper indicator-dots="{{indicatorDots}}"  
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
+        <block wx:for="{{imgUrls}}"  wx:key="{{key}}">  
+          <swiper-item>  
+            <navigator url="{{item.link}}" hover-class="navigator-hover">  
+              <image src="{{item.url}}" class="slide-image"/>  
+            </navigator>     
+          </swiper-item>  
+        </block>  
+</swiper> 
+<view class="fee">
+    <view class="iconPart t-FB1" bindtap="goQuery">
+      <image src="../../images/query.png"></image>
+      <view>费用查询</view>
+    </view>
+    <view class="iconPart t-FB1" bindtap="goQueryOperate">
+      <image src="../../images/write.png" wx:if="{{ifHaveRight}}"></image>
+      <view wx:if="{{ifHaveRight}}">费用录入</view>
+    </view>
+    <view class="iconPart t-FB1" bindtap='goToFeeList'>
+      <image src="../../images/manage.png" wx:if="{{ifHaveRight}}"></image>
+      <view wx:if="{{ifHaveRight}}">收费项目管理</view>
+    </view>
+    <view class="iconPart t-FB1" bindtap='upload'>
+      <!-- <image src="../../images/import.png" wx:if="{{ifHaveRight}}"></image>
+      <view wx:if="{{ifHaveRight}}">导入</view> -->
+    </view>
+  </view>
+   <wxc-dialog 
+    class="wxc-dialog" 
+    title="物业管理" 
+    content="物业管理申请获取您的昵称信息" 
+    confirm-text="点击注册" 
+    cancel-text="取消" 
+    bindconfirm="onConfirm" 
+    bindcancel="onCancel"
+  >
+  </wxc-dialog>

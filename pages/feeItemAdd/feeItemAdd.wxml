@@ -1,0 +1,10 @@
+<!--pages/feeItemAdd/feeItemAdd.wxml-->
+<input 
+  class="input" 
+  focus="{{true}}" 
+  bindinput="OnNameChange" 
+  placeholder='请输入' 
+  value="{{itemName}}"
+/>
+<button type="default" class="add" bindtap='onConfirm'>确定</button>
+

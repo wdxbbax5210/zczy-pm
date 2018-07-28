@@ -1,0 +1,22 @@
+/* pages/index/index.wxss */
+.fee {
+  height: auto;
+  background-color: #fff;
+  display: flex;
+  border-bottom: 1px solid #ededed;
+} 
+.iconPart {
+  text-align: center;
+  padding:30rpx 0;
+  font-size: 28rpx;
+}
+.iconPart image {
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 auto;
+  margin-bottom: 12rpx;
+}
+
+image.slide-image {
+  width: 100%!important;
+}

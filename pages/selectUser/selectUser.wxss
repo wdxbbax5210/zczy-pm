@@ -1,0 +1,31 @@
+/* pages/selectUser/selectUser.wxss */
+.itemName {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 88rpx;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #e4e4e4;
+}
+.searchTop{
+  height: 120rpx;
+  padding: 20rpx 30rpx;
+  background-color: #efefef;
+  border-bottom: 1px solid #e4e4e4;
+}
+.input{
+  border: 1px solid #e4e4e4;
+  height: 66rpx;
+  line-height: 66rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin-top:24rpx;
+  border-radius:8rpx;
+  background-color: #fff;
+}
+.no-data {
+  text-align: center;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  color: #999;
+}

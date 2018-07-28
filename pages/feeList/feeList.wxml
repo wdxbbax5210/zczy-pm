@@ -1,0 +1,36 @@
+<!--pages/feeList/feeList.wxml-->
+  <scroll-view scroll-y style="height: auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="feeList">
+      <view class="feeItem t-FBH"  wx:for="{{feeList}}"  wx:for-index="index" wx:key="index">
+        <view class="feeTitle t-FB1">{{item.itemName}}</view>
+        <view 
+          class="btn" 
+          bindtap='Edit' 
+          data-name="{{item.itemName}}" 
+          data-id="{{item.id}}"
+        >
+        编辑
+        </view>
+        <view class="btn" bindtap='feeItemDel' data-id="{{item.id}}">删除</view>
+      </view>
+      <button type="default" class="add" bindtap='Add'>新增</button>
+    </view>
+    <!-- <wxc-dialog 
+      class="wxc-dialog" 
+      title="{{itemId ? '编辑收费项目':'新增收费项目'}}" 
+      confirm-text="确认" 
+      bindconfirm="onConfirm"
+      bindcancel="onCancel" 
+      cancel-text="取消" 
+      confirm-color="#38ADFF"
+    >
+    <input 
+      class="input" 
+      focus="{{true}}" 
+      bindinput="OnNameChange" 
+      placeholder='请输入' 
+      value="{{itemName}}"
+    />
+  </wxc-dialog> -->
+  </scroll-view>
+
