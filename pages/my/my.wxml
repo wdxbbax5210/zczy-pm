@@ -18,6 +18,7 @@
     <view class="list-item">
       <wxc-list wx:if="(userInfo.userType != 0 && userInfo.userType != 1)" desc="用户信息审核" class="item" icon="check" icon-color="#69A0DD" title="用户审核" bind:click='getApproveList'></wxc-list>
       <wxc-list class="item" icon="feedback" icon-color="#69A0DD" mode="none" desc="暂未开放" title="意见反馈"></wxc-list>
+      <wxc-list class="item" icon="purse" icon-color="#69A0DD" mode="none" desc="设置电脑端密码" title="设置密码" bind:click="goToSetPassword"></wxc-list>
     </view>
   </view>
 

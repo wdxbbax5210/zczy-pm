@@ -58,8 +58,8 @@ Page({
             params: {
               // code: res.code,
               userInfo: userInfo,
-              //openId: getApp().globalData.openId,
-              //sessionKey: getApp().globalData.sessionKey
+              // openId: getApp().globalData.openId,
+              // sessionKey: getApp().globalData.sessionKey
             },
             success: (res) => {
               let userInfo = res;

@@ -18,7 +18,7 @@ Page({
     },
     userInfo: wx.getStorageSync("userInfo"),
     userList: [], //可选的用户列表
-    message:"", //保存失败后的提示语
+    message: "", //保存失败后的提示语
     backNumber: 1, //向上返回的层级数
     recordId: null,
   },
@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.item && JSON.parse(options.item) && !util.isEmptyObj(JSON.parse(options.item))){
+    if (options.item && JSON.parse(options.item) && !util.isEmptyObj(JSON.parse(options.item))) {
       let _item = JSON.parse(options.item);
       this.setData({
         amount: _item.planPayFee,     //应收金额
@@ -39,14 +39,14 @@ Page({
         recordId: _item.id  //记录id
       })
     }
-    if(options.id){
+    if (options.id) {
       this.setData({
         userId: options.id,
         userName: options.name,
         unitNumber: options.unit
       })
     }
-    if (options.itemId){
+    if (options.itemId) {
       this.setData({
         itemId: options.itemId
       })
@@ -54,10 +54,10 @@ Page({
     /**
      * 从选人页面回来 需要将后退页码改为2 才会退回到列表页
      */
-    if(options.from == "selectuser"){
-        this.setData({
-          backNumber: 2
-        })
+    if (options.from == "selectuser") {
+      this.setData({
+        backNumber: 2
+      })
     }
     if (this.data.recordId) {
       util.setTitle("编辑记录")
@@ -65,17 +65,17 @@ Page({
       util.setTitle("新增记录")
     }
   },
-  onSelectUser(){
+  onSelectUser() {
     wx.navigateTo({
       url: '../selectUser/selectUser?itemId=' + this.data.itemId,
     })
   },
-  onUnitChange(e){
+  onUnitChange(e) {
     this.setData({
       unitNumber: e.detail.value
     })
   },
-  onAmountChange(e){
+  onAmountChange(e) {
     this.setData({
       amount: e.detail.value
     })
@@ -92,9 +92,9 @@ Page({
   /**
    * 新增/编辑保存
    */
-  onConfirm(){
+  onConfirm() {
     let t = this;
-    if (!this.data.amount){
+    if (!this.data.amount) {
       this.showToast('应收金额必须输入！');
       return;
     }
@@ -111,36 +111,36 @@ Page({
       return;
     }
     let params = {
-      userId: this.data.userId, 
-      planPayFee: this.data.amount || null,  
-      itemId: this.data.itemId || null, 
+      userId: this.data.userId,
+      planPayFee: this.data.amount || null,
+      itemId: this.data.itemId || null,
       theMonth: this.data.date || null,
       recordId: this.data.recordId || null
     }
-    
+
     let url = '/fee/record/add';
     if (params.recordId) {
-      url ='/fee/record/upd'
+      url = '/fee/record/upd'
     }
     util.NetRequest({
       url: url,
       params: params,
       success: (res) => {
         console.log(res)
-        if(res.result == "313"){
+        if (res.result == "313") {
           t.setData({
             message: res.message
-          },()=>{
+          }, () => {
             let dialogComponent = t.selectComponent('.wxc-dialog')
             dialogComponent && dialogComponent.show();
           })
-        }else{
+        } else {
           wx.navigateBack({
             delta: t.data.backNumber
           })
         }
       },
-      fail: (err)=>{
+      fail: (err) => {
         console.log(err)
       }
     })
@@ -153,57 +153,57 @@ Page({
    * 提示
    */
   showToast(msg) {
-    this.setData({message: msg, $toast: { show: true } });
+    this.setData({ message: msg, $toast: { show: true } });
     setTimeout(() => {
-      this.setData({message: null, $toast: { show: false }});
+      this.setData({ message: null, $toast: { show: false } });
     }, 1000)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

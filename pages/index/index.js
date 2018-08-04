@@ -29,12 +29,12 @@ Page({
     userInfo: null,
     ifHaveRight: false, //当前用户身份是否在员工及以上
   },
-  goQueryOperate: function(){
+  goQueryOperate: function () {
     wx.navigateTo({
       url: '../feeRecordList/home?operateRight=1',
     })
   },
-  goQuery: function (){
+  goQuery: function () {
     wx.navigateTo({
       url: '../feeRecordList/home',
     })
@@ -64,11 +64,11 @@ Page({
             params: params,
             success: (res) => {
               let userInfo = res.data.userInfo;
-              if (userInfo && !util.isEmptyObj(userInfo)){ //注册过
+              if (userInfo && !util.isEmptyObj(userInfo)) { //注册过
                 getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
                 let ifHaveRight = false;
                 //当前用户不是未知身份 且不是普通用户
-                if (userInfo.userType != "0" && userInfo.userType != "1"){
+                if (userInfo.userType != "0" && userInfo.userType != "1") {
                   ifHaveRight = true
                 }
                 t.setData({
@@ -76,7 +76,7 @@ Page({
                   ifHaveRight: ifHaveRight
                 })
                 wx.setStorageSync("userInfo", userInfo)
-                if (userInfo.userType == "0"){ //当前用户身份未知时跳转到等待页面
+                if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
                   wx.reLaunch({
                     url: '../noAccess/noAccess'
                   })
@@ -94,25 +94,25 @@ Page({
         }
       }
     });
-    
+
     // wx.getSetting({
     //   success: function (res) {
     //     console.log(res)
-        //已经授权 
-        // if (res.authSetting['scope.userInfo']) {
-        //   //从cookie中获取用户信息 给后台
-        //   console.log(wx.getStorageSync("userInfo").data,"已经授权的处理")
-        //   let userInfo = wx.getStorageSync("userInfo").data;
-        //   getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
-        //   getApp().globalData.requestId = userInfo.openId;
-        // } else {
-        //   //没有授权 引导用户授权
-        //   t.showDialog()
-        // }
-      // }
+    //已经授权 
+    // if (res.authSetting['scope.userInfo']) {
+    //   //从cookie中获取用户信息 给后台
+    //   console.log(wx.getStorageSync("userInfo").data,"已经授权的处理")
+    //   let userInfo = wx.getStorageSync("userInfo").data;
+    //   getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
+    //   getApp().globalData.requestId = userInfo.openId;
+    // } else {
+    //   //没有授权 引导用户授权
+    //   t.showDialog()
+    // }
+    // }
     // })
   },
-  showDialog(){
+  showDialog() {
     let dialogComponent = this.selectComponent('.wxc-dialog')
     dialogComponent && dialogComponent.show();
   },
@@ -135,7 +135,7 @@ Page({
     })
     this.hideDialog();
   },
-  upload(){
+  upload() {
     // wx.openDocument({
 
     // })
@@ -144,48 +144,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

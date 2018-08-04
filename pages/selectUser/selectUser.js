@@ -1,6 +1,6 @@
 // pages/selectUser/selectUser.js
 
-import util from "../../utils/util.js"; 
+import util from "../../utils/util.js";
 Page({
 
   /**
@@ -9,9 +9,9 @@ Page({
   data: {
     userList: [], //用户列表
     userName: null, //按照名字搜索
-    page:1,
+    page: 1,
     pageSize: 10,
-    count:0,
+    count: 0,
     itemId: null,
   },
 
@@ -20,13 +20,13 @@ Page({
    */
   onLoad: function (options) {
     this.getUserList();
-    console.log(options,"选人页面")
+    console.log(options, "选人页面")
     this.setData({
       itemId: options.itemId
     })
   },
-//获取用户列表 跳转页面选人
-  getUserList(){
+  //获取用户列表 跳转页面选人
+  getUserList() {
     let t = this;
     let params = {
       userType: 1, //查询普通用户列表
@@ -52,68 +52,68 @@ Page({
   /**
    * 搜索用户
    */
-  onNameChange(e){
+  onNameChange(e) {
     this.setData({
       userName: e.detail.value || null
-    },()=>{
+    }, () => {
       this.getUserList();
     })
   },
   /**
    * 选中某人返回上一页带上选中人的id
    */
-  onSelectUser(e){
+  onSelectUser(e) {
     let t = this;
     wx.redirectTo({
-      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&unit=" + e.target.dataset.unit + "&itemId="+this.data.itemId+"&from=selectuser",
+      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&unit=" + e.target.dataset.unit + "&itemId=" + this.data.itemId + "&from=selectuser",
     })
-  },  
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })
