@@ -65,7 +65,7 @@ Page({
   onSelectUser(e){
     let t = this;
     wx.redirectTo({
-      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name+"&itemId="+this.data.itemId+"&from=selectuser",
+      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&unit=" + e.target.dataset.unit + "&itemId="+this.data.itemId+"&from=selectuser",
     })
   },  
   /**

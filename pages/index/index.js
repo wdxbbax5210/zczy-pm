@@ -82,8 +82,8 @@ Page({
                   })
                 }
               } else {//没有授权 引导用户授权登录
-                getApp().globalData.openId = res.openId;
-                getApp().globalData.sessionKey = res.sessionKey;
+                getApp().globalData.openId = res.data.openId;
+                getApp().globalData.sessionKey = res.data.sessionKey;
                 t.showDialog();
               }
               console.log(res.data, "校验是否注册过")

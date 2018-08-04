@@ -42,7 +42,8 @@ Page({
     if(options.id){
       this.setData({
         userId: options.id,
-        userName: options.name
+        userName: options.name,
+        unitNumber: options.unit
       })
     }
     if (options.itemId){

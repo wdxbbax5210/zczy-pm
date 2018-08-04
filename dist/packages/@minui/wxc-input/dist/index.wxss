@@ -59,7 +59,7 @@
     height: 46rpx;
     min-height: 46rpx;
     line-height: 46rpx;
-    font-size: 32rpx
+    font-size: 28rpx
 }
 .input__placeholder {
     font-size: 28rpx;

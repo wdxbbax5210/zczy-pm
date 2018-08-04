@@ -29,8 +29,9 @@
       bindtap='onSelectUser'
       data-id="{{item.id}}"
       data-name="{{item.nickName}}"
+      data-unit="{{item.unitNumber}}"
       >
-      {{item.nickName}}
+      {{item.nickName}}{{item.unitNumber ? "" : (item.unitNumber)}}
     </view>
   </view>  
 </scroll-view>
