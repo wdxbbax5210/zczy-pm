@@ -152,8 +152,9 @@ Page({
       url: '/fee/item/list',
       params: params,
       success: (res) => {
+        console.log(res.data)
         this.setData({
-          tabs: res.data.list,
+          tabs: res.data && res.data.list,
         }, () => {
           this.onQueryDetailList()
         })
@@ -190,13 +191,13 @@ Page({
       url: url,
       params: params,
       success: (res) => {
-        let _list = res.data.list || [];
+        let _list = res.data && res.data.list || [];
         if (t.data.page > 1 && res.data.list) {
           _list = t.data.list.concat(res.data.list)
         }
         this.setData({
           list: _list,
-          count: res.data.count
+          count: res.data && res.data.count || 0
         })
       }
     })
