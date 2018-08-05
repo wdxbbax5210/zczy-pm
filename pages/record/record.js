@@ -9,8 +9,20 @@ Page({
     date: "", //选择的时间
     amount: "",
     type: "null", // 0是标记已缴费 1是标记已开票
+    $toast: {
+      show: false
+    },
+    message:''
   },
-
+  /**
+     * 提示
+     */
+  showToast(msg) {
+    this.setData({ message: msg, $toast: { show: true } });
+    setTimeout(() => {
+      this.setData({ message: null, $toast: { show: false } });
+    }, 1000)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,38 +72,52 @@ Page({
    * 记录缴费
    */
   recordPay() {
-    util.NetRequest({
-      url: "/fee/record/pay",
-      params: {
-        recordId: this.data.recordId,   //记录id
-        realPayFee: this.data.amount, //实际缴费金额
-        payTime: this.data.date //缴费时间
-      },
-      success: (data) => {
-        console.log(data)
-        wx.navigateBack({
-          delta: 1
-        })
-      }
-    })
+    if(!this.data.date){
+      this.showToast("请选择缴费时间")
+    }else if(!this.data.amount){
+      this.showToast("请输入实际缴费金额")
+    }else {
+      util.NetRequest({
+        url: "/fee/record/pay",
+        params: {
+          recordId: this.data.recordId,   //记录id
+          realPayFee: this.data.amount, //实际缴费金额
+          payTime: this.data.date //缴费时间
+        },
+        success: (data) => {
+          console.log(data)
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      })
+    }
   },
   /**
    * 记录开票
    */
   recordTicket() {
-    util.NetRequest({
-      url: "/fee/record/ticket",
-      params: {
-        recordId: this.data.recordId,   //记录id
-        payTime: this.data.date //开票时间
-      },
-      success: (data) => {
-        console.log(data)
-        wx.navigateBack({
-          delta: 1
-        })
-      }
-    })
+    if (!this.data.date) {
+      this.showToast("请选择开票日期")
+    }else{
+      util.NetRequest({
+        url: "/fee/record/ticket",
+        params: {
+          recordId: this.data.recordId,   //记录id
+          payTime: this.data.date //开票时间
+        },
+        success: (data) => {
+          console.log(data)
+          if (data.result == "313") {
+            this.showToast(data.message)
+          } else {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

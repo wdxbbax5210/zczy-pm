@@ -1,6 +1,10 @@
 /* pages/home/home.wxss */
 .page {
-  -webkit-overflow-scrolling: touch;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:108rpx;
 }
 .slide-image{  
     width: 100%;  
@@ -8,7 +12,6 @@
 .tab {
   background-color: #fff;
   font-size: 28rpx;
-  height: 42rpx;
   line-height: 42rpx;
 }
 .search-wrap {
@@ -89,16 +92,11 @@
 .scroll-view{
   position:absolute;
   top:88rpx;
-  bottom:118rpx;
+  bottom:128rpx;
   left:0;
   right:0;
-  -webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch;
 }
-.no-bottom{
-  bottom:0;
-}
-
-
 /**zhihu.index.wxss**/
 .container {
   height: 100%;
@@ -110,7 +108,10 @@
   box-sizing: border-box;
   background: #F0F4F3;
 }
-
+.no-bottom{
+  bottom:0;
+  margin-bottom: 0;
+}
 .container.withtab{
   margin: 105rpx 0 0 0;
   /*top: 105rpx;*/

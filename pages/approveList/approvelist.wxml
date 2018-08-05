@@ -19,7 +19,7 @@
         <view class="feed-item">
           <view class="feed-source">
             <a class="">
-              <view class="avatar">
+              <view wx:if="{{item.avatarUrl}}" class="avatar">
                 <image src="{{item.avatarUrl}}"></image>
               </view>
               <text>单元：{{item.unitNumber}}</text>
@@ -33,8 +33,8 @@
             <view class="question">
               <a class="question-link">
                 <text>性别:{{item.gender ? "未知": (item.gender == 1 ? "男":"女")}}</text>
-                <text style='margin-left:15rpx;'>地区:{{item.province}}</text>
-                <text style='margin-left:15rpx;'>手机:{{item.phoneNumber}}</text>
+                <text style='margin-left:15rpx;'>地区:{{item.province || "暂无"}}</text>
+                <text style='margin-left:15rpx;'>手机:{{item.phoneNumber || "暂无"}}</text>
               </a>
             </view>
             <view class="answer-body">

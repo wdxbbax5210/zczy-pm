@@ -65,12 +65,13 @@
         </picker>
       </view>
     </view>
+  </view>
     <scroll-view scroll-y bindscrolltolower="lower" scroll-top="{{scrollTop}}" class="{{operateRight ? 'scroll-view container' : 'scroll-view container no-bottom'}} ">
       <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
         <view class="feed-item">
           <view class="feed-source">
             <a class="">
-              <view class="avatar">
+              <view wx:if='{{item.avatarUrl}}' class="avatar">
                 <image src="{{item.avatarUrl}}"></image>
               </view>
               <text>单元：{{item.unitNumber}}</text>
@@ -148,8 +149,7 @@
         新增记录
       </button>
     </view>
-  </view>
-  <view wx:else class="no-data">
+  <!-- <view wx:else class="no-data">
     <wxc-abnor type="MESSAGE" title="没有收费项目"></wxc-abnor>
-  </view>
+  </view> -->
 </view>

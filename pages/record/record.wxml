@@ -15,4 +15,6 @@
     </picker>
   </view>
    <button class="btn-login t-FB1 " type='primary' bindtap="onConfirm">提交</button>
+   <wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'操作失败'}}" confirm-text="知道了" bindconfirm="btnConfirm">
+      </wxc-toast>
 </view>
