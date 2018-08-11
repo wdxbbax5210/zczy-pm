@@ -64,27 +64,34 @@ Page({
             params: params,
             success: (res) => {
               let userInfo = res.data.userInfo;
-              if (userInfo && !util.isEmptyObj(userInfo)) { //注册过
-                getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
-                let ifHaveRight = false;
-                //当前用户不是未知身份 且不是普通用户
-                if (userInfo.userType != "0" && userInfo.userType != "1") {
-                  ifHaveRight = true
-                }
-                t.setData({
-                  userInfo: userInfo,
-                  ifHaveRight: ifHaveRight
-                })
-                wx.setStorageSync("userInfo", userInfo)
-                if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
-                  wx.reLaunch({
-                    url: '../noAccess/noAccess'
-                  })
-                }
-              } else {//没有授权 引导用户授权登录
+              let userType = (userInfo && !util.isEmptyObj(userInfo)) ? userInfo.userType : null;
+              // 没有授权 引导用户授权登录 或者拒绝审核后
+              if (null == userType || userType == -1) {
                 getApp().globalData.openId = res.data.openId;
                 getApp().globalData.sessionKey = res.data.sessionKey;
-                t.showDialog();
+                if (null != userType && userType == -1) {
+                  t.showDialog('.falid-user-type');
+                  return;
+                }
+                t.showDialog('.unknow-user-type');
+                return;
+              }
+              // 注册过
+              getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
+              let ifHaveRight = false;
+              //当前用户不是未知身份 且不是普通用户
+              if (userInfo.userType != "0" && userInfo.userType != "1") {
+                ifHaveRight = true
+              }
+              t.setData({
+                userInfo: userInfo,
+                ifHaveRight: ifHaveRight
+              })
+              wx.setStorageSync("userInfo", userInfo)
+              if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
+                wx.reLaunch({
+                  url: '../noAccess/noAccess'
+                })
               }
               console.log(res.data, "校验是否注册过")
             }
@@ -94,35 +101,19 @@ Page({
         }
       }
     });
-
-    // wx.getSetting({
-    //   success: function (res) {
-    //     console.log(res)
-    //已经授权 
-    // if (res.authSetting['scope.userInfo']) {
-    //   //从cookie中获取用户信息 给后台
-    //   console.log(wx.getStorageSync("userInfo").data,"已经授权的处理")
-    //   let userInfo = wx.getStorageSync("userInfo").data;
-    //   getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
-    //   getApp().globalData.requestId = userInfo.openId;
-    // } else {
-    //   //没有授权 引导用户授权
-    //   t.showDialog()
-    // }
-    // }
-    // })
   },
-  showDialog() {
-    let dialogComponent = this.selectComponent('.wxc-dialog')
+  showDialog(dialog) {
+    // '.wxc-dialog'
+    let dialogComponent = this.selectComponent(dialog);
     dialogComponent && dialogComponent.show();
   },
-  hideDialog() {
-    let dialogComponent = this.selectComponent('.wxc-dialog')
+  hideDialog(dialog) {
+    let dialogComponent = this.selectComponent(dialog);
     dialogComponent && dialogComponent.hide();
   },
-  onCancel() {
+  onCancel(dialog) {
     console.log('点击了取消按钮')
-    this.hideDialog()
+    this.hideDialog(dialog);
   },
   //确认授权
   onConfirm() {

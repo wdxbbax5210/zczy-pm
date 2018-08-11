@@ -14,9 +14,9 @@ Page({
     count: 0,
     myUserType: null,
     buttons: { // 7普通员工  8管理员 9超级管理员
-      7: [{ key: 1, name: '设为用户' }],
-      8: [{ key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }],
-      9: [{ key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }, { key: 8, name: '设置为管理员' }]
+      7: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设为用户' }],
+      8: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }],
+      9: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }, { key: 8, name: '设置为管理员' }]
     },
     buttonByUserType:null
   },

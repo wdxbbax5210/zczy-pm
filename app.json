@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/register/register",
     "pages/feeRecordList/home",
     "pages/my/my",
     "pages/logs/logs",
     "pages/approveList/approvelist",
-    "pages/register/register",
     "pages/feeList/feeList",
     "pages/noAccess/noAccess",
     "pages/record/record",

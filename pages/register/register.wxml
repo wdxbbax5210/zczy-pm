@@ -3,10 +3,10 @@
   <view class="section">
     <view class="container">
       <view class="input-wrap">
-        <wxc-input type="text" mode="normal" title="单元编号" placeholder="输入单元编号" bindinput='onPhoneChange'></wxc-input>
+        <wxc-input type="text" mode="normal" title="单元编号" placeholder="输入单元编号（必填）" bindinput='onPhoneChange'></wxc-input>
       </view>
       <view class="input-wrap">
-        <wxc-input type="number" mode="none" title="手机号码" placeholder="输入手机号码" bindinput='onUnitChange'></wxc-input>
+        <wxc-input type="number" mode="none" title="手机号码" placeholder="输入手机号码（必填）" bindinput='onUnitChange'></wxc-input>
       </view>
       <view class="button-large-wrap">
         <wxc-button size="large" type="danger" loading="{{false}}" value="申请登录" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"></wxc-button>
