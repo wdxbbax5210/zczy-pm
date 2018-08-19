@@ -9,7 +9,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logged: false, //是否登录
     unitNumber: '', //单元编号
-    phoneNumber: '' //手机号码
+    phoneNumber: '', //手机号码
+    ifFromApprove: false, //是否来自审核页面
+    userId: null, //所编辑用户的id
   },
 
   /**
@@ -17,6 +19,16 @@ Page({
    */
   onLoad: function (options) {
     let t = this;
+    console.log(options.from)
+    if (options.from == "approve"){
+      console.log("来自用户审核编辑用户信息")
+      this.setData({
+        ifFromApprove: true,
+        userId: options.userId
+      },()=>{
+        console.log(this.data.userId)
+      })
+    }
     //判断是否已授权 
     wx.getSetting({
       success: function (res) {
@@ -81,6 +93,29 @@ Page({
     dialogComponent && dialogComponent.hide();
     wx.switchTab({
       url: '../index/index',
+    })
+  },
+  //
+  confirmEdit(){
+    console.log("编辑用户信息", this.data.userId)
+    util.NetRequest({
+      url: '/user/edit',
+      params: {
+        userId: this.data.userId,
+        unitNumber: this.data.unitNumber,
+        phoneNumber: this.data.phoneNumber
+      },
+      success: (res) => {
+        console.log(res)
+        // 返回上一页 提示设置成功
+        if (res.result == 100){
+          wx.navigateBack({
+            delta: 1,
+          })
+        }
+        // let dialogComponent = t.selectComponent('.wxc-dialog')
+        // dialogComponent && dialogComponent.show();
+      }
     })
   },
   /**

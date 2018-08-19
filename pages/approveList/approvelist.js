@@ -18,7 +18,14 @@ Page({
       8: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }],
       9: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }, { key: 8, name: '设置为管理员' }]
     },
-    buttonByUserType:null
+    buttonByUserType:null,
+    edit: [
+      {
+        id: "edit",
+        name: "编辑"
+      }
+    ],
+    ifShowToast: false
   },
   onChangeTab(event) {
     let tab = event.target.dataset.active;
@@ -104,6 +111,29 @@ Page({
         this.queryUserList();
       }
     })
+  },
+  editUserInfo: function(event){
+    let value = event.detail.value;
+    let userId = event.target.dataset.id;
+    console.log(this.data.userInfo.userType,"只有超级管理员才可编辑")
+    console.log(value, userId)
+    if (value == 0 && this.data.userInfo.userType == 9){
+      wx.navigateTo({
+        url: '../register/register?from=approve&userId='+userId,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }else{
+      this.setData({
+        ifShowToast: true
+      })
+      setTimeout(()=>{
+        this.setData({
+          ifShowToast: false
+        })
+      },1000)
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

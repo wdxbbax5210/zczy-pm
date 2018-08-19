@@ -16,8 +16,10 @@
   </view>
   <scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{list.length}}" class="scroll-view container">
     <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
-        <view class="feed-item">
-          <view class="feed-source">
+      <view class="feed-item t-FBH">
+        <picker class="t-FB1"  bindchange="editUserInfo" value='0' range="{{edit}}" range-key="name" data-id="{{item.id}}">
+        <view >
+        <view class="feed-source">
             <a class="">
               <view wx:if="{{item.avatarUrl}}" class="avatar">
                 <image src="{{item.avatarUrl}}"></image>
@@ -25,9 +27,7 @@
               <text>单元：{{item.unitNumber || "暂无"}}</text>
               <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
             </a>
-            <picker class="item-more" bindchange="userVerify" range-key='name' range="{{buttonByUserType}}" data-id="{{item.id}}" data-item="{{item}}">
-              <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
-            </picker>
+            
           </view>
           <view class="feed-content">
             <view class="question">
@@ -44,8 +44,12 @@
             </view>
           </view>
         </view>
+        </picker>
+          <picker bindchange="userVerify" range-key='name' range="{{buttonByUserType}}" data-id="{{item.id}}" data-item="{{item}}">
+              <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
+            </picker>
+        </view>
       </view>
-    
     <!-- <view class="user-list" wx:for="{{list}}" wx:for-index="index" wx:key="{{item.id}}">
       <view class="user-item t-FBH">
         <view class="name t-FB1">{{item.nickName}}</view>
@@ -62,4 +66,6 @@
     </view> -->
   </scroll-view>
   <view wx:else class="no-data">暂无数据</view>
+  <wxc-toast class="wxc-dialog" is-show="{{ifShowToast}}" text="{{'抱歉，您暂无权限操作'}}" confirm-text="知道了" >
+      </wxc-toast>
 </view>
