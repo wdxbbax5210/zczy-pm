@@ -17,7 +17,7 @@
   <scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{list.length}}" class="scroll-view container">
     <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
       <view class="feed-item t-FBH">
-        <picker class="t-FB1"  bindchange="editUserInfo" value='0' range="{{edit}}" range-key="name" data-id="{{item.id}}">
+        <picker class="t-FB1"  bindchange="editUserInfo" value='0' range="{{edit}}" range-key="name" data-id="{{item.id}}" data-item="{{item}}">
         <view >
         <view class="feed-source">
             <a class="">

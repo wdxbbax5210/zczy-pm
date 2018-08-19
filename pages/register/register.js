@@ -19,14 +19,13 @@ Page({
    */
   onLoad: function (options) {
     let t = this;
-    console.log(options.from)
     if (options.from == "approve"){
-      console.log("来自用户审核编辑用户信息")
+      console.log(options,"来自用户审核编辑用户信息")
       this.setData({
         ifFromApprove: true,
-        userId: options.userId
-      },()=>{
-        console.log(this.data.userId)
+        userId: options.userId,
+        phoneNumber: options.phoneNumber,
+        unitNumber: options.unitNumber
       })
     }
     //判断是否已授权 
@@ -95,7 +94,6 @@ Page({
       url: '../index/index',
     })
   },
-  //
   confirmEdit(){
     console.log("编辑用户信息", this.data.userId)
     util.NetRequest({
@@ -113,8 +111,6 @@ Page({
             delta: 1,
           })
         }
-        // let dialogComponent = t.selectComponent('.wxc-dialog')
-        // dialogComponent && dialogComponent.show();
       }
     })
   },

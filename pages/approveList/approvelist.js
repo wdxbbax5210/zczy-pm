@@ -115,11 +115,12 @@ Page({
   editUserInfo: function(event){
     let value = event.detail.value;
     let userId = event.target.dataset.id;
+    let _item = event.target.dataset.item;
     console.log(this.data.userInfo.userType,"只有超级管理员才可编辑")
     console.log(value, userId)
     if (value == 0 && this.data.userInfo.userType == 9){
       wx.navigateTo({
-        url: '../register/register?from=approve&userId='+userId,
+        url: '../register/register?from=approve&userId=' + userId + '&phoneNumber=' + _item.phoneNumber+"&unitNumber="+_item.unitNumber,
         success: function(res) {},
         fail: function(res) {},
         complete: function(res) {},
