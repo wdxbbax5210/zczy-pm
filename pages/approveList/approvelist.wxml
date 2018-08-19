@@ -22,7 +22,7 @@
               <view wx:if="{{item.avatarUrl}}" class="avatar">
                 <image src="{{item.avatarUrl}}"></image>
               </view>
-              <text>单元：{{item.unitNumber}}</text>
+              <text>单元：{{item.unitNumber || "暂无"}}</text>
               <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
             </a>
             <picker class="item-more" bindchange="userVerify" range-key='name' range="{{buttonByUserType}}" data-id="{{item.id}}" data-item="{{item}}">
