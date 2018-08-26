@@ -11,8 +11,8 @@ Page({
     date: "",       //所属月份
     unitNumber: "", //单元编号
     itemId: null,   //收费项目Id
-    userId: null,   //用户id
-    userName: "", //选中的用户昵称
+    companyId: null,   //企业id
+    companyName: "", //选中的企业昵称
     $toast: {
       show: false
     },
@@ -34,15 +34,15 @@ Page({
         date: _item.theMonth,       //所属月份
         unitNumber: _item.unitNumber || null, //单元编号
         itemId: _item.itemId,   //收费项目Id
-        userId: _item.userId,   //用户id
-        userName: _item.nickName, //选中的用户昵称
+        companyId: _item.companyId,   //用户id
+        companyName: _item.companyName, //选中的用户昵称
         recordId: _item.id  //记录id
       })
     }
     if (options.id) {
       this.setData({
-        userId: options.id,
-        userName: options.name,
+        companyId: options.id,
+        companyName: options.name,
         unitNumber: options.unit
       })
     }
@@ -54,7 +54,7 @@ Page({
     /**
      * 从选人页面回来 需要将后退页码改为2 才会退回到列表页
      */
-    if (options.from == "selectuser") {
+    if (options.from == "selectcompany") {
       this.setData({
         backNumber: 2
       })
@@ -102,16 +102,16 @@ Page({
       this.showToast('所属月份必须选择！');
       return;
     }
-    if (!this.data.userId) {
-      this.showToast('请选择用户！');
+    if (!this.data.companyId) {
+      this.showToast('请选择企业！');
       return;
     }
     if (!this.data.unitNumber) {
-      this.showToast('该用户还没有单元编号，请先去填写！');
+      this.showToast('该企业还没有单元编号，请先去填写！');
       return;
     }
     let params = {
-      userId: this.data.userId,
+      companyId: this.data.companyId,
       planPayFee: this.data.amount || null,
       itemId: this.data.itemId || null,
       theMonth: this.data.date || null,

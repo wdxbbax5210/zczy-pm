@@ -11,6 +11,7 @@
     "pages/noAccess/noAccess",
     "pages/record/record",
     "pages/selectUser/selectUser",
+    "pages/selectCompany/index",
     "pages/feeItemAdd/feeItemAdd",
     "pages/setPassword/setPassword",
     "pages/editUser/editUser",
