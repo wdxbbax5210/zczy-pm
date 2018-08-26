@@ -22,10 +22,14 @@
       <image src="../../images/manage.png" wx:if="{{ifHaveRight}}"></image>
       <view wx:if="{{ifHaveRight}}">收费项目管理</view>
     </view>
-    <view class="iconPart t-FB1" bindtap='upload'>
-      <!-- <image src="../../images/import.png" wx:if="{{ifHaveRight}}"></image>
-      <view wx:if="{{ifHaveRight}}">导入</view> -->
+    <view class="iconPart t-FB1" bindtap='goToTenantList'>
+      <image src="../../images/tenant.png" wx:if="{{ifShowTenant}}"></image>
+      <view wx:if="{{ifHaveRight}}">租户企业</view>
     </view>
+    <!-- <view class="iconPart t-FB1" bindtap='upload'>
+       <image src="../../images/import.png" wx:if="{{ifHaveRight}}"></image>
+      <view wx:if="{{ifHaveRight}}">导入</view>
+    </view> -->
   </view>
    <wxc-dialog class="wxc-dialog unknow-user-type" 
     title="注册信息" content="物业管理申请获取您的昵称信息" 

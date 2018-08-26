@@ -15,7 +15,8 @@
     "pages/setPassword/setPassword",
     "pages/editUser/editUser",
     "pages/editCompany/index",
-    "pages/selectCompany/index"
+    "pages/tenant/tenantList/tenantList",
+    "pages/tenant/tanantAdd/tenantAdd"
   ],
   "window": {
     "backgroundTextStyle": "light",

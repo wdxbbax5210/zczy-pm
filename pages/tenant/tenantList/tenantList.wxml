@@ -1,0 +1,19 @@
+<!--pages/tenant/tenantList/tenantList.wxml-->
+  <scroll-view scroll-y style="height: auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="tanantList">
+      <view class="tanantItem t-FBH"  wx:for="{{tenantList}}"  wx:for-index="index" wx:key="index">
+        <view class="tanantTitle t-FB1">{{item.companyName}}</view>
+        <view 
+          class="btn" 
+          bindtap='Edit' 
+          data-name="{{item.companyName}}" 
+          data-id="{{item.id}}"
+          data-unit="{{item.unitNumber}}"
+        >
+        编辑
+        </view>
+        <view class="btn" bindtap='tenantItemDel' data-id="{{item.id}}">删除</view>
+      </view>
+      <button type="default" class="add" bindtap='Add'>新增</button>
+    </view>
+  </scroll-view>

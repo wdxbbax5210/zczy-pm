@@ -28,6 +28,7 @@ Page({
     duration: 1000,
     userInfo: null,
     ifHaveRight: false, //当前用户身份是否在员工及以上
+    ifShowTenant: false, //是否显示租户企业
   },
   goQueryOperate: function () {
     wx.navigateTo({
@@ -42,6 +43,11 @@ Page({
   goToFeeList: function () {
     wx.navigateTo({
       url: '../feeList/feeList',
+    })
+  },
+  goToTenantList: function () {
+    wx.navigateTo({
+      url: '../tenant/tenantList/tenantList',
     })
   },
   /**
@@ -78,15 +84,20 @@ Page({
               }
               // 注册过
               getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
-              let ifHaveRight = false;
+              let ifHaveRight = false, ifShowTenant = false;
               //当前用户不是未知身份 且不是普通用户
               if (userInfo.userType != "0" && userInfo.userType != "1") {
                 ifHaveRight = true
               }
+              if(userInfo.userType == "9"){
+                ifShowTenant = true
+              }
               t.setData({
                 userInfo: userInfo,
-                ifHaveRight: ifHaveRight
+                ifHaveRight: ifHaveRight,
+                ifShowTenant: ifShowTenant
               })
+            
               wx.setStorageSync("userInfo", userInfo)
               if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
                 wx.reLaunch({
