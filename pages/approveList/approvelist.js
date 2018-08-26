@@ -13,18 +13,20 @@ Page({
     pageSize: 10,
     count: 0,
     myUserType: null,
-    buttons: { // 7普通员工  8管理员 9超级管理员
-      7: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设为用户' }],
+    buttons: { 
+      // 7普通员工  8管理员 9超级管理员
+      7: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }],
       8: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }],
-      9: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }, { key: 8, name: '设置为管理员' }]
+      9: [{ key: -1, name: '拒绝审核' }, { key: 1, name: '设置为用户' }, { key: 7, name: '设置为员工' }, { key: 8, name: '设置为管理' }]
     },
     buttonByUserType:null,
-    edit: [
-      {
-        id: "edit",
-        name: "编辑"
-      }
-    ],
+    editButtons: {
+      // 7普通员工  8管理员 9超级管理员
+      7: [{ id: "make_company", name: "指定租户企业" }],
+      8: [{ id: "make_company", name: "指定租户企业" }],
+      9: [{ id: "edit", name: "编辑" }, { id: "make_company", name: "指定租户企业" }]
+    },
+    edit: null,
     ifShowToast: false
   },
   onChangeTab(event) {
@@ -45,10 +47,13 @@ Page({
     console.log(userType, "我的身份");
     let buttonByUserType = this.data.buttons[userType];
     console.log(buttonByUserType, "我的按钮");
+    let edit = this.data.editButtons[userType];
+    console.log(edit, "我的编辑按钮");
     this.queryUserList();
     this.setData({
       myUserType: parseInt(userType),
-      buttonByUserType: buttonByUserType
+      buttonByUserType: buttonByUserType,
+      edit: edit
     })
   },
   queryUserList: function () {
@@ -113,28 +118,56 @@ Page({
     })
   },
   editUserInfo: function(event){
+    console.log(event);
     let value = event.detail.value;
+    let edit = this.data.edit;
+    let editButton = edit[value];
+    if (null == editButton) {
+      console.log("没有选中任何选项");
+      return;
+    }
+    let option = editButton.id;
     let userId = event.target.dataset.id;
     let _item = event.target.dataset.item;
-    console.log(this.data.userInfo.userType,"只有超级管理员才可编辑")
-    console.log(value, userId)
-    if (value == 0 && this.data.userInfo.userType == 9){
-      wx.navigateTo({
-        url: '../register/register?from=approve&userId=' + userId + '&phoneNumber=' + _item.phoneNumber+"&unitNumber="+_item.unitNumber,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-    }else{
-      this.setData({
-        ifShowToast: true
-      })
-      setTimeout(()=>{
-        this.setData({
-          ifShowToast: false
-        })
-      },1000)
+    if (option == 'edit') {
+      console.log("选择了跳转编辑页面");
+      this.redirectToEdit(userId, _item);
     }
+    if (option == 'make_company'){
+      console.log("选择了跳转指定租户企业页面");
+    }
+  },
+  redirectToEdit: function (userId, _item) {
+    let myUserType = this.data.userInfo.userType;
+    console.log(myUserType, "只有超级管理员才可编辑");
+    if (myUserType != 9) {
+      this.setData({ifShowToast: true});
+      setTimeout(() => {this.setData({ifShowToast: false})}, 1000);
+      return;
+    }
+    wx.navigateTo({
+      url: '../editUser/editUser?from=approve&userId=' + userId + '&phoneNumber=' + _item.phoneNumber,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  showPopup(event) {
+    let dataset = event.target.dataset;
+    console.log(dataset);
+    let item = dataset.item;
+    if (null == item) {
+      console.log("item不存在");
+      return;
+    }
+    // 用户类型  0未审核 1普通用户 7普通员工  8管理员 9超级管理员 默认显示待审核列表
+    let userType = item.userType;
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.show();
+  },
+  hidePopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.hide();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

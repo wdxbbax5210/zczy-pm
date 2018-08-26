@@ -12,7 +12,9 @@
     "pages/addFeeRecord/addFeeRecord",
     "pages/selectUser/selectUser",
     "pages/feeItemAdd/feeItemAdd",
-    "pages/setPassword/setPassword"    
+    "pages/setPassword/setPassword",
+    "pages/editUser/editUser",
+    "pages/editCompany/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

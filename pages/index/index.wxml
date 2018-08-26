@@ -33,6 +33,6 @@
     bindconfirm="onConfirm" bindcancel="onCancel"></wxc-dialog>
 
   <wxc-dialog class="wxc-dialog falid-user-type" 
-    title="审核失败" content="您的注册信息有误请重新申请（手机号码或单元编号）" 
+    title="审核失败" content="您的注册被拒绝，请重新申请（联系物业管理）！" 
     confirm-text="点击重填" cancel-text="取消" 
     bindconfirm="onConfirm" bindcancel="onCancel"></wxc-dialog>
