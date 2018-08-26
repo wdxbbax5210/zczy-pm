@@ -14,7 +14,9 @@
     "pages/feeItemAdd/feeItemAdd",
     "pages/setPassword/setPassword",
     "pages/editUser/editUser",
-    "pages/editCompany/index"
+    "pages/editCompany/index",
+    "pages/tenant/tenantList/tenantList",
+    "pages/tenant/tanantAdd/tenantAdd"
   ],
   "window": {
     "backgroundTextStyle": "light",
