@@ -1,4 +1,4 @@
-// pages/selectUser/selectUser.js
+// pages/selectCompany/index.js
 
 import util from "../../utils/util.js";
 Page({
@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList: [], //用户列表
-    userName: null, //按照名字搜索
+    companyList: [], //企业列表
+    companyName: null, //按照名字搜索
     page: 1,
     pageSize: 10,
     count: 0,
@@ -19,53 +19,50 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserList();
-    console.log(options, "选人页面")
+    this.getCompanyList();
+    console.log(options, "选企业页面")
     this.setData({
       itemId: options.itemId
     })
   },
-  //获取用户列表 跳转页面选人
-  getUserList() {
+  //获取企业列表 跳转页面选企业
+  getCompanyList() {
     let t = this;
     let params = {
-      userType: 1, //查询普通用户列表
-      nickName: this.data.userName,  //昵称
-      unitNumber: null, //单元编号
-      phoneNumber: null, //手机号码
+      companyName: this.data.companyName,  //昵称
       page: this.data.page,
       pageSize: this.data.pageSize
     }
     console.log(params)
     util.NetRequest({
-      url: '/user/list',
+      url: '/lessee/company/list',
       params: params,
       success: (res) => {
-        console.log(res.data, "用户列表")
+        console.log(res.data, "企业列表")
         this.setData({
-          userList: res.data.list || [],
+          companyList: res.data.list || [],
           count: res.data.count
         })
       }
     })
   },
   /**
-   * 搜索用户
+   * 搜索企业
    */
   onNameChange(e) {
     this.setData({
-      userName: e.detail.value || null
+      companyName: e.detail.value || null
     }, () => {
-      this.getUserList();
+      this.getCompanyList();
     })
   },
   /**
    * 选中某人返回上一页带上选中人的id
    */
-  onSelectUser(e) {
+  onSelectCompany(e) {
     let t = this;
     wx.redirectTo({
-      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&itemId=" + this.data.itemId + "&from=selectuser",
+      url: '../addFeeRecord/addFeeRecord?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&itemId=" + this.data.itemId + "&from=selectcompany",
     })
   },
   /**
@@ -97,7 +94,7 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 页面相关事件处理函数--监听企业下拉动作
    */
   onPullDownRefresh: function () {
 
@@ -111,7 +108,7 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 企业点击右上角分享
    */
   onShareAppMessage: function () {
 

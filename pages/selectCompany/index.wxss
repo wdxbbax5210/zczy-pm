@@ -1,4 +1,4 @@
-/* pages/selectUser/selectUser.wxss */
+/* pages/selectCompany/index.wxss */
 .itemName {
   font-size: 32rpx;
   color: #333;

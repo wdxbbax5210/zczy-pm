@@ -65,9 +65,9 @@ Page({
       util.setTitle("新增记录")
     }
   },
-  onSelectUser() {
+  onSelectCompany() {
     wx.navigateTo({
-      url: '../selectUser/selectUser?itemId=' + this.data.itemId,
+      url: '../selectCompany/index?itemId=' + this.data.itemId,
     })
   },
   onUnitChange(e) {

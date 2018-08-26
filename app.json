@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/addFeeRecord/addFeeRecord",
     "pages/register/register",
     "pages/feeRecordList/home",
     "pages/my/my",
@@ -9,12 +10,12 @@
     "pages/feeList/feeList",
     "pages/noAccess/noAccess",
     "pages/record/record",
-    "pages/addFeeRecord/addFeeRecord",
     "pages/selectUser/selectUser",
     "pages/feeItemAdd/feeItemAdd",
     "pages/setPassword/setPassword",
     "pages/editUser/editUser",
-    "pages/editCompany/index"
+    "pages/editCompany/index",
+    "pages/selectCompany/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

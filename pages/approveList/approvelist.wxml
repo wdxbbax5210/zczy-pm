@@ -24,16 +24,25 @@
                 <view wx:if="{{item.avatarUrl}}" class="avatar">
                   <image src="{{item.avatarUrl}}"></image>
                 </view>
-                <text>单元：{{item.unitNumber || "暂无"}}</text>
                 <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
               </a>
             </view>
             <view class="feed-content">
               <view class="question">
                 <a class="question-link">
+                  <text>企业:{{item.companyName || "暂无"}}</text>
+                  <text style='margin-left:15rpx;'>单元编号:{{item.unitNumber || "暂无"}}</text>
+                </a>
+              </view>
+              <view class="question">
+                <a class="question-link">
                   <text>性别:{{item.gender ? "未知": (item.gender == 1 ? "男":"女")}}</text>
                   <text style='margin-left:15rpx;'>地区:{{item.province || "暂无"}}</text>
-                  <text style='margin-left:15rpx;'>手机:{{item.phoneNumber || "暂无"}}</text>
+                </a>
+              </view>
+              <view class="question">
+                <a class="question-link">
+                  <text>手机:{{item.phoneNumber || "暂无"}}</text>
                 </a>
               </view>
               <view class="answer-body">

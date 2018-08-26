@@ -2,8 +2,10 @@
 <view class="main">
   <view class="section">
     <view class="container">
-      <view class="input-wrap">
-        <wxc-input type="number" mode="none" title="手机号码" placeholder="输入手机号码" bindinput='onPhoneChange' value="{{phoneNumber}}"></wxc-input>
+      <view class="list-wrap" wx:if="{{!recordId}}">
+        <view class="list-item">
+          <wxc-list title="选择企业" mode="none" desc="{{companyName ? companyName : '请选择'}}" bind:click="onSelectUser"></wxc-list>
+        </view>
       </view>
       <view class="button-large-wrap">
         <wxc-button size="large" type="danger" loading="{{false}}" value="确认修改" bindtap='confirmEdit'></wxc-button>

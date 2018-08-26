@@ -1,4 +1,4 @@
-<!--pages/selectUser/selectUser.wxml-->
+<!--pages/selectCompany/index.wxml-->
 <view class="searchTop">
   <input type="text" class="input" placeholder='搜索' value="{{userName}}" bindinput='onNameChange' />
 </view>

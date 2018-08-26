@@ -48,7 +48,7 @@ Page({
     })
   },
   confirmEdit() {
-    console.log("编辑用户信息", this.data.userId)
+    console.log("编辑用户企业", this.data.userId)
     util.NetRequest({
       url: '/user/edit',
       params: {
