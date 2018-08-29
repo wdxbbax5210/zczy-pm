@@ -1,5 +1,5 @@
-// pages/editCompany/index.js
-import util from "../../utils/util.js";
+// pages/user/edit/index.js
+import util from "../../../utils/util.js";
 let header = getApp().globalData.header;
 Page({
   /**
@@ -8,7 +8,7 @@ Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logged: false, //是否登录
-    companyId: '', //企业ID
+    phoneNumber: '', //手机号码
     ifFromApprove: false, //是否来自审核页面
     userId: null, //所编辑用户的id
   },
@@ -16,22 +16,22 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    util.setTitle("编辑用户企业");
+  onLoad: function(options) {
+    util.setTitle("编辑用户信息");
     let t = this;
     if (options.from == "approve") {
-      console.log(options, "来自用户审核编辑用户企业")
+      console.log(options, "来自用户审核编辑用户信息")
       this.setData({
         ifFromApprove: true,
         userId: options.userId,
-        companyId: options.companyId
+        phoneNumber: options.phoneNumber
       })
     }
   },
-  onCompanyChange(e) {
+  onPhoneChange(e) {
     console.log(e)
     this.setData({
-      companyId: e.detail.value
+      phoneNumber: e.detail.value
     })
   },
   onConfirm() {
@@ -48,7 +48,7 @@ Page({
     })
   },
   confirmEdit() {
-    console.log("编辑用户企业", this.data.userId)
+    console.log("编辑用户信息", this.data.userId)
     util.NetRequest({
       url: '/user/edit',
       params: {
@@ -69,49 +69,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

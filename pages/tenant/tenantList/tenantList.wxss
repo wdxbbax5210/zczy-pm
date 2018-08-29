@@ -1,5 +1,21 @@
 /* pages/tenant/tenantList/tenantList.wxss */
-
+.searchTop{
+  height: 120rpx;
+  padding: 20rpx 30rpx;
+  background-color: #efefef;
+  border-bottom: 1px solid #e4e4e4;
+}
+.input{
+  border: 1px solid #e4e4e4;
+  height: 66rpx;
+  line-height: 66rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  /*margin-top:24rpx;*/
+  border-radius:8rpx;
+  background-color: #fff;
+}
 .bottom {
   height: 118rpx;
   background: #F0F4F3;
@@ -42,7 +58,7 @@
 
 .scroll-view {
   position: absolute;
-  top: 10rpx;
+  top: 110rpx;
   bottom: 0;
   left: 0;
   right: 0;

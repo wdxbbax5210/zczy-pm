@@ -1,0 +1,21 @@
+/* pages/fee/item/add/index.wxss */
+
+.input {
+  font-size: 28rpx;
+  color: #333;
+  border: 1px solid #e4e4e4;
+  padding: 0 20rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border-radius: 8rpx;
+  margin: 24rpx 30rpx;
+}
+
+.add {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin: 0 30rpx;
+  margin-top: 48rpx;
+}

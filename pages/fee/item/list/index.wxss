@@ -1,0 +1,40 @@
+/* pages/fee/item/list/index.wxss */
+
+.feeItemList {
+  height: auto;
+  background-color: #fff;
+  padding: 24rpx;
+  -webkit-overflow-scrolling: touch;
+}
+
+.feeItem {
+  border-bottom: 1px solid #ededed;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.add {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin-top: 48rpx;
+}
+
+.btn {
+  margin-left: 24rpx;
+  color: #38adff;
+}
+
+.wxc-dialog .input {
+  font-size: 28rpx;
+  color: #333;
+  margin: 24rpx 0;
+  border: 1px solid #e4e4e4;
+  padding: 0 20rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border-radius: 8rpx;
+}

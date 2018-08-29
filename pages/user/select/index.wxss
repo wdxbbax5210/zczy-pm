@@ -1,4 +1,5 @@
-/* pages/selectCompany/index.wxss */
+/* pages/user/select/index.wxss */
+
 .itemName {
   font-size: 32rpx;
   color: #333;
@@ -6,23 +7,26 @@
   padding: 0 30rpx;
   border-bottom: 1px solid #e4e4e4;
 }
-.searchTop{
+
+.searchTop {
   height: 120rpx;
   padding: 20rpx 30rpx;
   background-color: #efefef;
   border-bottom: 1px solid #e4e4e4;
 }
-.input{
+
+.input {
   border: 1px solid #e4e4e4;
   height: 66rpx;
   line-height: 66rpx;
   padding: 0 20rpx;
   font-size: 28rpx;
   color: #333;
-  /*margin-top:24rpx;*/
-  border-radius:8rpx;
+  margin-top: 24rpx;
+  border-radius: 8rpx;
   background-color: #fff;
 }
+
 .no-data {
   text-align: center;
   font-size: 24rpx;
@@ -31,6 +35,7 @@
 }
 
 /* 用户审核列表css */
+
 .user-item {
   padding: 36rpx;
   font-size: 28rpx;
@@ -53,7 +58,7 @@
 
 .scroll-view {
   position: absolute;
-  top: 110rpx;
+  top: 120rpx;
   bottom: 0;
   left: 0;
   right: 0;

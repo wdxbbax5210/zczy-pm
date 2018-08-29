@@ -42,7 +42,7 @@ Page({
   },
   goToFeeList: function () {
     wx.navigateTo({
-      url: '../feeList/feeList',
+      url: '../fee/item/list/index',
     })
   },
   goToTenantList: function () {
@@ -101,7 +101,7 @@ Page({
               wx.setStorageSync("userInfo", userInfo)
               if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
                 wx.reLaunch({
-                  url: '../noAccess/noAccess'
+                  url: '../user/access/index'
                 })
               }
               console.log(res.data, "校验是否注册过")

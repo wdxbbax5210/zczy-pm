@@ -34,7 +34,7 @@ Page({
    */
   getApproveList: function() {
     wx.navigateTo({
-      url: '../approveList/approvelist',
+      url: '../user/approve/list/index',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -47,7 +47,7 @@ Page({
   },
   goToSetPassword: function(){
     wx.navigateTo({
-      url: '../setPassword/setPassword',
+      url: '../user/password/index',
     })
   },
   /**
