@@ -1,23 +1,23 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/addFeeRecord/addFeeRecord",
     "pages/register/register",
-    "pages/feeRecordList/home",
     "pages/my/my",
     "pages/logs/logs",
-    "pages/record/record",
-    "pages/selectCompany/index",
-    "pages/editCompany/index",
-    "pages/tenant/tenantList/tenantList",
-    "pages/tenant/tanantAdd/tenantAdd",
     "pages/user/approve/list/index",
     "pages/user/edit/index",
     "pages/user/access/index",
     "pages/user/password/index",
     "pages/user/select/index",
     "pages/fee/item/add/index",
-    "pages/fee/item/list/index"
+    "pages/fee/item/list/index",
+    "pages/fee/record/add/index",
+    "pages/fee/record/list/index",
+    "pages/company/add/index",
+    "pages/company/list/index",
+    "pages/company/edit/index",
+    "pages/company/select/index",
+    "pages/fee/record/ticket/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

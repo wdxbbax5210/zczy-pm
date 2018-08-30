@@ -1,0 +1,106 @@
+/* pages/company/edit/index.wxss */
+.section {
+  background-color: #fff;
+  padding: 24rpx;
+}
+.input {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  color: 333;
+  border: 1px solid #ededed;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  padding: 0 24rpx;
+}
+.btn-login {
+  height:88rpx;
+  line-height:88rpx;
+  font-size:32rpx;
+  color: #fff;
+}
+
+/* ------------- */
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.input-wrap {
+  width: 100%;
+  background: #fff;
+}
+
+.list-wrap {
+  width: 100%;
+  background: #fff;
+}
+
+.list-wrap .list-item {
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.list-wrap .list-item:last-child {
+  margin: 0;
+}
+
+.list-wrap .list-check {
+  display: flex;
+  align-items: center;
+}
+
+.list-wrap .check-wrap {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  border-radius: 100%;
+  border: 1px solid #d8d8d8;
+}
+
+.list-wrap .check {
+  position: absolute;
+  top: 0;
+  left: -2rpx;
+  width: 100%;
+  height: 100%;
+  line-height: 42rpx;
+}
+
+.list-wrap .list-image {
+  width: 102rpx;
+  height: 102rpx;
+  margin-left: 30rpx;
+}
+
+.list-wrap .radius {
+  border-radius: 100px;
+}
+
+.list-wrap .item {
+  flex: 1;
+}
+
+.list-wrap .list-image {
+  width: 102rpx;
+  height: 102rpx;
+  background: #d8d8d8;
+}
+
+.button-wrap {
+  margin: 0 0 10rpx 35rpx;
+  float: left;
+}
+
+.button-large-wrap {
+  margin-top: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.button-small-wrap {
+  margin: 0 0 10rpx 30rpx;
+  float: left;
+}

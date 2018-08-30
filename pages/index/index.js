@@ -32,12 +32,12 @@ Page({
   },
   goQueryOperate: function () {
     wx.navigateTo({
-      url: '../feeRecordList/home?operateRight=1',
+      url: '../fee/record/list/index?operateRight=1',
     })
   },
   goQuery: function () {
     wx.navigateTo({
-      url: '../feeRecordList/home',
+      url: '../fee/record/list/index',
     })
   },
   goToFeeList: function () {
@@ -47,7 +47,7 @@ Page({
   },
   goToTenantList: function () {
     wx.navigateTo({
-      url: '../tenant/tenantList/tenantList',
+      url: '../company/list/index',
     })
   },
   /**
