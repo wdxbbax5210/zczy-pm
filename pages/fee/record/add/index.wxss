@@ -115,3 +115,14 @@
   margin: 0 0 10rpx 30rpx;
   float: left;
 }
+.save {
+  margin: 30rpx;
+  background-color: #dc3545;
+  color: #fff;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  width:94%;
+}

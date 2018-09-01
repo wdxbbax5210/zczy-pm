@@ -110,7 +110,7 @@
 }
 .save {
   margin: 0 30rpx;
-  background-color: red;
+  background-color: #dc3545;
   color: #fff;
   text-align: center;
   height: 88rpx;
