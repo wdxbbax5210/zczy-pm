@@ -191,6 +191,14 @@
   color: #a0acac;
   font-size: 26rpx;
 }
+
+.container .feed-item .feed-content .item-pay{
+  display: inline-block;
+  width: 40rpx;
+  height: 45rpx;
+  float: right;
+}
+
 .container .feed-item .feed-source .item-more{
   display: inline-block;
   width: 40rpx;

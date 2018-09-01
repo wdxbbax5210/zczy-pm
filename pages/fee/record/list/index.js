@@ -16,8 +16,10 @@ Page({
     date: '',
     list: [],
     operateRight: null,
-    status: ["缴费", "开票", "编辑", "删除"],
+    status: ["缴费", "开票"],
+    editButtons: ["编辑", "删除"],
     selectedStatus: 0,
+    selectedEditButton: 0,
     page: 1,
     pageSize: 10,
     count: 0,
@@ -107,7 +109,6 @@ Page({
     let value = e.detail.value
     let data = e.target.dataset;
     let id = data.id;
-    // console.log('缴费状态或者开票状态改变，携带值为', e.detail.value)
     this.setData({
       selectedStatus: value
     }, () => {
@@ -115,12 +116,25 @@ Page({
       let amount = data.amount;
       if (value == 0 || value == 1) {
         wx.navigateTo({
-          url: '../fee/record/ticket/index?recordId=' + id + '&amount=' + amount + '&type=' + value,
+          url: '../ticket/index?recordId=' + id + '&amount=' + amount + '&type=' + value,
         })
-      } else if (value == 3) { 
-        //删除该条记录
+      }
+    })
+  },
+  /**
+   * 操作 编辑删除
+   */
+  bindhandleEdit(e) {
+    let value = e.detail.value
+    let data = e.target.dataset;
+    let id = data.id;
+    this.setData({
+      selectedEditButton: value
+    }, () => {
+     if (value == 1) {
+        // 删除该条记录
         this.delFeeRecord(id);
-      } else if (value == 2) {
+      } else if (value == 0) {
         console.log("跳转编辑页面");
         let item = JSON.stringify(data.item);
         wx.navigateTo({

@@ -39,11 +39,14 @@
             <text>单元：{{item.unitNumber}}</text>
             <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
           </a>
-          <picker class="item-more" bindchange="bindhandleChange" range="{{status}}" wx:if="{{operateRight}}" data-id="{{item.id}}" data-amount="{{item.planPayFee}}" data-item="{{item}}">
+          <picker class="item-more" bindchange="bindhandleEdit" range="{{editButtons}}" wx:if="{{operateRight}}" data-id="{{item.id}}" data-amount="{{item.planPayFee}}" data-item="{{item}}">
             <image class="item-more" mode="aspectFit" src="../../../../images/more.png"></image>
           </picker>
         </view>
         <view class="feed-content">
+          <picker class="item-pay" bindchange="bindhandleChange" range="{{status}}" wx:if="{{operateRight}}" data-id="{{item.id}}" data-amount="{{item.planPayFee}}" data-item="{{item}}">
+              <image class="item-pay" mode="aspectFit" src="../../../../images/pay.png"></image>
+          </picker>
           <view class="question">
             <a class="question-link">
               <text>所属月份:{{item.theMonth}}</text>
