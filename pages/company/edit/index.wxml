@@ -4,7 +4,7 @@
     <view class="container">
       <view class="list-wrap" wx:if="{{!recordId}}">
         <view class="list-item">
-          <wxc-list title="选择企业" mode="none" desc="{{companyName ? companyName : '请选择'}}" bind:click="onSelectUser"></wxc-list>
+          <wxc-list title="选择企业" mode="none" desc="{{companyName ? companyName : '请选择'}}" bind:click="onSelectCompany"></wxc-list>
         </view>
       </view>
       <view class="button-large-wrap">

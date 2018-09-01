@@ -9,8 +9,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logged: false, //是否登录
     companyId: '', //企业ID
+    companyName:'',
     ifFromApprove: false, //是否来自审核页面
     userId: null, //所编辑用户的id
+    backNumber: 1, //向上返回的层级数
   },
 
   /**
@@ -24,7 +26,16 @@ Page({
       this.setData({
         ifFromApprove: true,
         userId: options.userId,
-        companyId: options.companyId
+        companyId: options.companyId,
+        companyName: options.companyName || null
+      })
+    }
+    /**
+     * 从选人页面回来 需要将后退页码改为2 才会退回到列表页
+     */
+    if (options.from == "selectcompany") {
+      this.setData({
+        backNumber: 2
       })
     }
   },
@@ -45,6 +56,11 @@ Page({
     }
     wx.switchTab({
       url: '../index/index',
+    })
+  },
+  onSelectCompany() {
+    wx.navigateTo({
+      url: '../select/index?pageFrom=company_edit&itemId=' + this.data.itemId,
     })
   },
   confirmEdit() {

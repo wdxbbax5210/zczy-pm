@@ -69,6 +69,14 @@ const isEmptyObj = obj => {
   }
   return true;
 };
+
+const isEmptyString = val => {
+  if (null == val || undefined == val || '' == val.trim()){
+    return true;
+  }
+  return false;
+};
+
 module.exports = {
   formatTime: formatTime,
   setTitle: setTitle,
@@ -76,5 +84,6 @@ module.exports = {
   hideLoading: hideLoading,
   getUserInfo: getUserInfo,
   NetRequest: NetRequest,
-  isEmptyObj: isEmptyObj
+  isEmptyObj: isEmptyObj,
+  isEmptyString: isEmptyString
 }

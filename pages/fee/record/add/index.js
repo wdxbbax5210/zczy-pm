@@ -21,14 +21,34 @@ Page({
     message: "", //保存失败后的提示语
     backNumber: 1, //向上返回的层级数
     recordId: null,
+    editMode: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.item && JSON.parse(options.item) && !util.isEmptyObj(JSON.parse(options.item))) {
-      let _item = JSON.parse(options.item);
+    let editMode = options.editMode;
+    if (editMode == 'add') {
+      util.setTitle("新增记录");
+      this.setData({
+        itemId: options.itemId,   //收费项目Id
+      })
+    }
+    if (editMode == 'upd') {
+      util.setTitle("编辑记录");
+      let item = options.item;
+      if (util.isEmptyString(item)) {
+        this.showToast('要编辑的数据不存在！', () => {
+          wx.navigateBack({ delta: 1 });
+        });
+      }
+      let _item = JSON.parse(item);
+      if (util.isEmptyObj(_item)) {
+        this.showToast('要编辑的数据不存在！', ()=> {
+          wx.navigateBack({ delta: 1 });
+        });
+      }
       this.setData({
         amount: _item.planPayFee,     //应收金额
         date: _item.theMonth,       //所属月份
@@ -39,35 +59,10 @@ Page({
         recordId: _item.id  //记录id
       })
     }
-    if (options.id) {
-      this.setData({
-        companyId: options.id,
-        companyName: options.name,
-        unitNumber: options.unit
-      })
-    }
-    if (options.itemId) {
-      this.setData({
-        itemId: options.itemId
-      })
-    }
-    /**
-     * 从选人页面回来 需要将后退页码改为2 才会退回到列表页
-     */
-    if (options.from == "selectcompany") {
-      this.setData({
-        backNumber: 2
-      })
-    }
-    if (this.data.recordId) {
-      util.setTitle("编辑记录")
-    } else {
-      util.setTitle("新增记录")
-    }
   },
   onSelectCompany() {
     wx.navigateTo({
-      url: '../../../company/select/index?itemId=' + this.data.itemId,
+      url: '../../../company/select/index?pageFrom=fee_record_add',
     })
   },
   onUnitChange(e) {
@@ -135,9 +130,7 @@ Page({
             dialogComponent && dialogComponent.show();
           })
         } else {
-          wx.navigateBack({
-            delta: t.data.backNumber
-          })
+          wx.navigateBack({ delta: 1 });
         }
       },
       fail: (err) => {
@@ -152,10 +145,14 @@ Page({
   /**
    * 提示
    */
-  showToast(msg) {
+  showToast(msg, callback) {
     this.setData({ message: msg, $toast: { show: true } });
     setTimeout(() => {
-      this.setData({ message: null, $toast: { show: false } });
+      this.setData({ message: null, $toast: { show: false } }, ()=> {
+        if (callback) {
+          callback();
+        }
+      });
     }, 1000)
   },
   /**

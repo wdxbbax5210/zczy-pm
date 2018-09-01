@@ -104,24 +104,27 @@ Page({
    * 操作 标记为已开票 标记为 已缴费
    */
   bindhandleChange(e) {
+    let value = e.detail.value
+    let data = e.target.dataset;
+    let id = data.id;
     // console.log('缴费状态或者开票状态改变，携带值为', e.detail.value)
     this.setData({
-      selectedStatus: e.detail.value
+      selectedStatus: value
     }, () => {
       //刷新列表状态
-      let id = e.target.dataset.id;
-      let amount = e.target.dataset.amount;
-      if (e.detail.value == 0 || e.detail.value == 1) {
+      let amount = data.amount;
+      if (value == 0 || value == 1) {
         wx.navigateTo({
-          url: '../fee/record/ticket/index?recordId=' + id + '&amount=' + amount + '&type=' + e.detail.value,
+          url: '../fee/record/ticket/index?recordId=' + id + '&amount=' + amount + '&type=' + value,
         })
-      } else if (e.detail.value == 3) { //删除该条记录
-        this.delFeeItem(id);
-      } else if (e.detail.value == 2) {
-        console.log("编辑去")
-        console.log(e.target.dataset)
+      } else if (value == 3) { 
+        //删除该条记录
+        this.delFeeRecord(id);
+      } else if (value == 2) {
+        console.log("跳转编辑页面");
+        let item = JSON.stringify(data.item);
         wx.navigateTo({
-          url: '../add/index?item=' + JSON.stringify(e.target.dataset.item),
+          url: '../add/index?editMode=upd&item=' + item,
         })
       }
     })
@@ -129,7 +132,7 @@ Page({
   /**
    * 删除该条收费记录
    */
-  delFeeItem(recordId) {
+  delFeeRecord(recordId) {
     util.NetRequest({
       url: '/fee/record/del',
       params: {
@@ -143,7 +146,7 @@ Page({
   /**
    * 获取收费项目列表 赋值给tabs
    */
-  getFeeList() {
+  getFeeItemList() {
     let params = {
       itemName: null, //非必填
       page: 1,
@@ -212,7 +215,7 @@ Page({
     let itemId = null == tab ? null : tab.id;
     console.log('跳转页面带参数ItemId', itemId);
     wx.navigateTo({
-      url: '../add/index?itemId=' + itemId,
+      url: '../add/index?editMode=add&itemId=' + itemId,
     })
   },
   /**
@@ -225,7 +228,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getFeeList();
+    this.getFeeItemList();
   },
 
   /**

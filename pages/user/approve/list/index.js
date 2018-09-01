@@ -174,7 +174,18 @@ Page({
     }
     if (option == 'make_company') {
       console.log("选择了跳转指定租户企业页面");
+      this.redirectToEditCompany(userId, _item);
     }
+  },
+  redirectToEditCompany: function (userId, _item) {
+    let companyId = _item.companyId || '';
+    let companyName = _item.companyName || '';
+    wx.navigateTo({
+      url: '../../../company/edit/index?from=approve&userId=' + userId + '&companyId=' + companyId + '&companyName=' + companyName,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
   redirectToEdit: function(userId, _item) {
     let myUserType = this.data.userInfo.userType;
@@ -190,8 +201,9 @@ Page({
       }, 1000);
       return;
     }
+    let phoneNumber = _item.phoneNumber || '';
     wx.navigateTo({
-      url: '../user/edit/index?from=approve&userId=' + userId + '&phoneNumber=' + _item.phoneNumber,
+      url: '../../../user/edit/index?from=approve&userId=' + userId + '&phoneNumber=' + phoneNumber,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

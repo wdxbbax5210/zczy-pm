@@ -9,10 +9,10 @@ Page({
   data: {
     companyList: [], //企业列表
     companyName: null, //按照名字搜索
+    pageFrom: null,
     page: 1,
     pageSize: 10,
     count: 0,
-    itemId: null,
   },
 
   /**
@@ -22,7 +22,8 @@ Page({
     this.getCompanyList();
     console.log(options, "选企业页面")
     this.setData({
-      itemId: options.itemId
+      pageFrom: options.pageFrom,
+      callbackData: options
     })
   },
   //获取企业列表 跳转页面选企业
@@ -61,9 +62,28 @@ Page({
    */
   onSelectCompany(e) {
     let t = this;
-    wx.redirectTo({
-      url: '../../fee/record/add/index?id=' + e.target.dataset.id + "&name=" + e.target.dataset.name + "&unit=" + e.target.dataset.unit + "&itemId=" + this.data.itemId + "&from=selectcompany",
-    })
+    let data = e.target.dataset;
+    let pageFrom = t.data.pageFrom;
+    let id = data.id;
+    let name = data.name;
+    let unit = data.unit;
+    let pages = getCurrentPages();
+    let prvePage = pages[pages.length - 2];
+    if (pageFrom == 'fee_record_add') {
+      prvePage.setData({
+        companyId: id,
+        companyName: name,
+        unitNumber: unit
+      });
+      wx.navigateBack({ delta: 1 });
+    }
+    if (pageFrom == 'company_edit') {
+
+      wx.redirectTo({
+        url: '../edit/index?id=' + id + "&name=" + name + "&unit=" + unit + "&from=selectcompany",
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

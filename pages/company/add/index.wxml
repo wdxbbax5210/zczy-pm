@@ -1,6 +1,18 @@
 <!--pages/company/add/index.wxml-->
-<input class="input" focus="{{true}}" bindinput="OnNameChange" placeholder='请输入租户名称' value="{{companyName}}" />
-<input class="input" focus="{{true}}" bindinput="OnUnitChange" placeholder='请输入单元编号' value="{{unitNumber}}" />
-<wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'信息填写不完整'}}" confirm-text="知道了" bindconfirm="btnConfirm">
-</wxc-toast>
-<button type="default" class="add" bindtap='onConfirm'>确定</button>
+<view class='main'>
+  <view class="section">
+    <view class="container">
+      <view class="input-wrap">
+        <wxc-input type="number" mode="normal" title="应收金额" placeholder="请输入租户名称" value="{{companyName}}" bindinput='OnNameChange'></wxc-input>
+      </view>
+      <view class="input-wrap">
+        <wxc-input type="number" mode="none" title="应收金额" placeholder="请输入单元编号" value="{{unitNumber}}" bindinput='OnUnitChange'></wxc-input>
+      </view>
+    </view>
+    <view class="button-large-wrap">
+        <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bindtap="onConfirm"></wxc-button>
+      </view>
+    <wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'信息填写不完整'}}" confirm-text="知道了" bindconfirm="btnConfirm">
+    </wxc-toast>
+  </view>
+</view>
