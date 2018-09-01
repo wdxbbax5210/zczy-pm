@@ -112,7 +112,7 @@ Page({
       theMonth: this.data.date || null,
       recordId: this.data.recordId || null
     }
-
+    util.showLoading('正在保存');
     let url = '/fee/record/add';
     if (params.recordId) {
       url = '/fee/record/upd'
@@ -121,6 +121,7 @@ Page({
       url: url,
       params: params,
       success: (res) => {
+        util.hideLoading();
         console.log(res)
         if (res.result == "313") {
           t.setData({
