@@ -40,6 +40,7 @@ Page({
       this.tenantItemUpdate();
     } else {
       this.tenantItemAdd();
+      console.log("点击确认")
     }
   },
   tenantItemAdd: function () {
@@ -53,6 +54,7 @@ Page({
       this.showToast('请输入单元编号!')
       return
     }
+    console.log("执行函数")
     let params = {
       companyName: this.data.companyName, //必填 
       unitNumber: this.data.unitNumber, //单元编号
