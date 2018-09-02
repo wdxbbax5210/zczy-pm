@@ -10,7 +10,9 @@ Page({
     amount: "",     //应收金额
     date: "",       //所属月份
     unitNumber: "", //单元编号
+    selectItem: null,
     itemId: null,   //收费项目Id
+    itemName: null, //收费项目名称
     companyId: null,   //企业id
     companyName: "", //选中的企业昵称
     $toast: {
@@ -21,19 +23,18 @@ Page({
     message: "", //保存失败后的提示语
     backNumber: 1, //向上返回的层级数
     recordId: null,
-    editMode: null
+    editMode: null,
+    items: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getFeeItemList();
     let editMode = options.editMode;
     if (editMode == 'add') {
       util.setTitle("新增记录");
-      this.setData({
-        itemId: options.itemId,   //收费项目Id
-      })
     }
     if (editMode == 'upd') {
       util.setTitle("编辑记录");
@@ -49,16 +50,53 @@ Page({
           wx.navigateBack({ delta: 1 });
         });
       }
+      console.log("编辑记录携带值", _item);
       this.setData({
         amount: _item.planPayFee,     //应收金额
         date: _item.theMonth,       //所属月份
         unitNumber: _item.unitNumber || null, //单元编号
         itemId: _item.itemId,   //收费项目Id
+        itemName: _item.itemName,
         companyId: _item.companyId,   //用户id
         companyName: _item.companyName, //选中的用户昵称
         recordId: _item.id  //记录id
       })
     }
+  },
+  /**
+   * 获取收费项目列表
+   */
+  getFeeItemList() {
+    let params = {
+      itemName: null, //非必填
+      page: 1,
+      pageSize: 99
+    }
+    util.NetRequest({
+      url: '/fee/item/list',
+      params: params,
+      success: (res) => {
+        console.log(res.data)
+        this.setData({
+          items: res.data.list || [],
+        })
+      }
+    })
+  },
+  /**
+   * 选择收费项目
+   */
+  bindItemChange: function (e) {
+    let selectItem = e.detail.value;
+    let items = this.data.items;
+    let item = items[selectItem];
+    console.log('收费项目改变，携带值为', selectItem)
+    console.log('收费项目改变，选择值为', item)
+    this.setData({
+      selectItem: selectItem,
+      itemId: item.id,
+      itemName: item.itemName
+    })
   },
   onSelectCompany() {
     wx.navigateTo({
@@ -101,6 +139,10 @@ Page({
       this.showToast('请选择企业！');
       return;
     }
+    if (!this.data.itemId) {
+      this.showToast('请选择收费项目！');
+      return;
+    }
     if (!this.data.unitNumber) {
       this.showToast('该企业还没有单元编号，请先去填写！');
       return;
@@ -131,7 +173,9 @@ Page({
             dialogComponent && dialogComponent.show();
           })
         } else {
-          wx.navigateBack({ delta: 1 });
+          wx.redirectTo({
+            url: '../list/index' 
+          });
         }
       },
       fail: (err) => {

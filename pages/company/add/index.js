@@ -37,13 +37,13 @@ Page({
   },
   onConfirm: function () {
     if (this.data.itemId) {
-      this.tenantItemUpdate();
+      this.companyUpdate();
     } else {
-      this.tenantItemAdd();
+      this.companyAdd();
       console.log("点击确认")
     }
   },
-  tenantItemAdd: function () {
+  companyAdd: function () {
     if (!this.data.companyName) {
       console.log("请输入租户名称")
       this.showToast('请输入租户名称!')
@@ -72,13 +72,13 @@ Page({
           itemId: null
         }, () => {
           wx.navigateBack({
-            delta: 1,
+            delta:1
           })
         })
       }
     })
   },
-  tenantItemUpdate: function () {
+  companyUpdate: function () {
     let t = this;
     if (!this.data.companyName) {
       console.log("请输入租户名称")
@@ -107,7 +107,7 @@ Page({
           itemId: null
         }, () => {
           wx.navigateBack({
-            delta: 1,
+            delta: 1
           })
         })
       }

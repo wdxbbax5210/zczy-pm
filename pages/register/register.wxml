@@ -7,7 +7,7 @@
       </view>
       <view class="button-large-wrap">
         <wxc-button wx:if="{{!ifFromApprove}}" size="large" type="danger" loading="{{false}}" value="申请登录" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"></wxc-button>
-        <wxc-button wx:else size="large" type="default" loading="{{false}}" value="确认修改" bindtap='confirmEdit'></wxc-button>
+        <wxc-button wx:else size="large" type="default" loading="{{false}}" value="确认修改" bindsubmit='confirmEdit'></wxc-button>
       </view>
       <wxc-dialog class="wxc-dialog" title="物业管理" content="你的登录申请已经提交，请耐心等待" confirm-text="知道了" bindconfirm="onConfirm">
       </wxc-dialog>

@@ -12,7 +12,16 @@ Page({
     tabSelected: 0,
     selected: 0,
     index: 0,
-    array: [{ key: null, name: '缴费状态' }, { key: 1, name: '已缴费' }, { key: 0, name: '未缴费' }],
+    array: [{
+      key: null,
+      name: '缴费状态'
+    }, {
+      key: 1,
+      name: '已缴费'
+    }, {
+      key: 0,
+      name: '未缴费'
+    }],
     date: '',
     list: [],
     operateRight: null,
@@ -27,7 +36,7 @@ Page({
   /**
    * 切换月份
    */
-  bindDateChange: function (e) {
+  bindDateChange: function(e) {
     console.log('月份选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
@@ -35,7 +44,7 @@ Page({
       this.onQueryDetailList();
     })
   },
-  lower: function (e) {
+  lower: function(e) {
     if (this.data.page * this.data.pageSize < this.data.count) {
       console.log("到底了！请求下一页")
       this.setData({
@@ -50,7 +59,7 @@ Page({
   /**
    * 选择缴费状态
    */
-  bindPickerChange: function (e) {
+  bindPickerChange: function(e) {
     console.log('缴费状态选择改变，携带值为', e.detail.value)
     this.setData({
       selected: e.detail.value
@@ -61,7 +70,7 @@ Page({
   /**
    * 选择收费项目
    */
-  bindItemChange: function (e) {
+  bindItemChange: function(e) {
     console.log('收费项目改变，携带值为', e.detail.value)
     this.setData({
       tabSelected: e.detail.value
@@ -72,7 +81,7 @@ Page({
   /**
    * 切换收费项目
    */
-  onClick: function (e) {
+  onClick: function(e) {
     this.setData({
       date: "",
       index: e.detail.key,
@@ -86,7 +95,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     util.setTitle("费用查询");
     console.log(options.operateRight)
     if (options.operateRight) {
@@ -131,7 +140,7 @@ Page({
     this.setData({
       selectedEditButton: value
     }, () => {
-     if (value == 1) {
+      if (value == 1) {
         // 删除该条记录
         this.delFeeRecord(id);
       } else if (value == 0) {
@@ -184,7 +193,17 @@ Page({
    * 查询对应收费项目的详情列表 赋值给list
    */
   onQueryDetailList() {
-    let t = this, { tabs, selected, userInfo, date, index, array, tabIndex, tabSelected } = t.data;
+    let t = this,
+      {
+        tabs,
+        selected,
+        userInfo,
+        date,
+        index,
+        array,
+        tabIndex,
+        tabSelected
+      } = t.data;
     let url = this.data.operateRight == 1 ? "/fee/record/list" : "/fee/record/owner/list";
     let tab = null == tabs ? null : (tabs[tabSelected] || null);
     let itemName = null == tab ? null : tab.itemName;
@@ -224,59 +243,54 @@ Page({
    * 新增收费记录
    */
   onAddRecord() {
-    let t = this, { tabs, selected, userInfo, date, index, array, tabIndex, tabSelected } = t.data;
-    let tab = null == tabs ? null : (tabs[tabSelected] || null);
-    let itemId = null == tab ? null : tab.id;
-    console.log('跳转页面带参数ItemId', itemId);
-    wx.navigateTo({
-      url: '../add/index?editMode=add&itemId=' + itemId,
+    wx.redirectTo({
+      url: '../add/index?editMode=add'
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.getFeeItemList();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

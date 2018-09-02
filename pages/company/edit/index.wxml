@@ -8,7 +8,7 @@
         </view>
       </view>
       <view class="button-large-wrap">
-        <wxc-button size="large" type="danger" loading="{{false}}" value="确认修改" bindtap='confirmEdit'></wxc-button>
+        <wxc-button size="large" type="danger" loading="{{false}}" value="确认修改" bindsubmit='confirmEdit'></wxc-button>
       </view>
       <wxc-dialog class="wxc-dialog" title="物业管理" content="修改成功" confirm-text="知道了" bindconfirm="onConfirm">
       </wxc-dialog>

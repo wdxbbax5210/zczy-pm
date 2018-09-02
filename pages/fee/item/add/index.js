@@ -47,8 +47,8 @@ Page({
           itemName: null,
           itemId: null
         }, () => {
-          wx.navigateBack({
-            delta: 1,
+          wx.redirectTo({
+            url: "../list/index",
           })
         })
       }
@@ -70,8 +70,8 @@ Page({
           itemName: null,
           itemId: null
         }, () => {
-          wx.navigateBack({
-            delta: 1,
+          wx.redirectTo({
+            url: "../list/index",
           })
         })
       }

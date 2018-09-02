@@ -1,6 +1,6 @@
 /* pages/company/list/index.wxss */
 .searchTop{
-  height: 120rpx;
+  height: 80rpx;
   padding: 20rpx 30rpx;
   background-color: #efefef;
   border-bottom: 1px solid #e4e4e4;
@@ -23,6 +23,12 @@
   bottom:0;
   left: 0;
   right: 0;
+}
+.no-data {
+  text-align: center;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  color: #999;
 }
 .btn-add {
   margin: 0 30rpx;

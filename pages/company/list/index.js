@@ -25,7 +25,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.setTitle("租户企业")
+    util.setTitle("租户企业");
+    this.getCompanyList();
   },
   Add: function () {
     let t = this;
@@ -49,7 +50,7 @@ Page({
       params: params,
       success: (data) => {
         console.log("删除租户企业")
-        t.getTenantList()
+        t.getCompanyList()
       }
     })
   },
@@ -74,7 +75,7 @@ Page({
       this.Del(companyId);
     }
   },
-  getTenantList() {
+  getCompanyList() {
     let params = {
       companyName: this.data.companyName, //非必填 
       page: this.data.page,
@@ -85,8 +86,9 @@ Page({
       url: '/lessee/company/list',
       params: params,
       success: (res) => {
+        let _list = res.data.list || [];
         t.setData({
-          companyList: res.data.list
+          companyList: _list
         })
       }
     })
@@ -102,7 +104,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTenantList()
+    //this.getCompanyList()
     console.log("onShow")
   },
 

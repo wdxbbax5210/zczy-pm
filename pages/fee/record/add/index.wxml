@@ -7,8 +7,15 @@
           <wxc-list title="选择企业" mode="normal" desc="{{companyName ? companyName : '请选择'}}" bind:click="onSelectCompany"></wxc-list>
         </view>
       </view>
+      <view class="list-wrap" wx:if="{{!recordId}}">
+        <view class="list-item">
+          <picker bindchange="bindItemChange" value="{{tabIndex}}" range-key='itemName' range="{{items}}">
+            <wxc-list title="收费项目" mode="normal" desc="{{itemName ? itemName : '请选择'}}"></wxc-list>
+          </picker>
+        </view>
+      </view>
       <view class="input-wrap">
-        <wxc-input type="text" mode="normal" title="单元编号" placeholder="选择用户回填单元编号" disabled="true" value="{{unitNumber}}"></wxc-input>
+        <wxc-input type="text" mode="normal" title="单元编号" placeholder="选择企业回填单元编号" disabled="true" value="{{unitNumber}}"></wxc-input>
       </view>
       <view class="list-wrap">
         <view class="list-item">
@@ -22,7 +29,7 @@
       </view>
       <view class="save" bindtap="onConfirm">保存</view>
       <!-- <view class="button-large-wrap"> -->
-        <!-- <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bindtap="onConfirm"></wxc-button> -->
+      <!-- <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bindtap="onConfirm"></wxc-button> -->
       <!-- </view> -->
       <wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'信息填写不完整'}}" confirm-text="知道了" bindconfirm="btnConfirm">
       </wxc-toast>

@@ -22,20 +22,13 @@ Page({
     let t = this;
     // let dialogComponent = t.selectComponent('.wxc-dialog')
     // dialogComponent && dialogComponent.show();
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../add/index',
     })
   },
   Edit: function (event) {
     let t = this;
-    // this.setData({
-    //   itemName: event.target.dataset.name,
-    //   itemId: event.target.dataset.id
-    // },()=>{
-    //   let dialogComponent = t.selectComponent('.wxc-dialog')
-    //   dialogComponent && dialogComponent.show();
-    // })
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../add/index?itemName=' + event.target.dataset.name + '&itemId=' + event.target.dataset.id,
     })
   },
@@ -52,7 +45,7 @@ Page({
       params: params,
       success: (res) => {
         t.setData({
-          feeItemList: res.data.list
+          feeItemList: res.data.list || []
         })
       }
     })

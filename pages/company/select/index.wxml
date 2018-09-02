@@ -2,7 +2,7 @@
 <view class="searchTop">
   <input type="text" class="input" placeholder='搜索' value="{{companyName}}" bindinput='onNameChange' />
 </view>
-<scroll-view scroll-y style="height: auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{companyList.length}}" class="scroll-view container">
+<scroll-view scroll-y style="height: auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" class="scroll-view container">
   <view class="userlist" wx:for="{{companyList}}" wx:for-index="index" wx:key="{{item.id}}">
     <view class="feed-item t-FBH" bindtap='onSelectCompany' data-id="{{item.id}}" data-name="{{item.companyName}}" data-unit="{{item.unitNumber}}">
       <view>
@@ -14,12 +14,14 @@
         <view class="feed-content">
           <view class="question">
             <a class="question-link">
-              <text style='margin-left:15rpx;'>单元编号:{{item.unitNumber || "暂无"}}</text>
+              <text style='margin-left:15rpx;'>单元编号：{{item.unitNumber || "暂无"}}</text>
             </a>
           </view>
         </view>
       </view>
     </view>
   </view>
+  <view wx:if="{{companyList.length == 0}}" class="no-data">
+    <wxc-abnor type="DATA" title="没有租户企业"></wxc-abnor>
+  </view>
 </scroll-view>
-<view wx:else class="no-data">搜索没有结果</view>

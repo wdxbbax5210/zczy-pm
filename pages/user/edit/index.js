@@ -6,6 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    $toast: {
+      show: false
+    },
+    message: null,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logged: false, //是否登录
     phoneNumber: '', //手机号码
@@ -38,8 +42,8 @@ Page({
     let dialogComponent = this.selectComponent('.wxc-dialog')
     dialogComponent && dialogComponent.hide();
     if (this.data.ifFromApprove) {
-      wx.switchTab({
-        url: '../user/approve/list/index',
+      wx.navigateBack({
+        delta: 1
       });
       return;
     }
@@ -50,13 +54,16 @@ Page({
   confirmEdit() {
     console.log("编辑用户信息", this.data.userId)
     util.NetRequest({
-      url: '/user/edit',
+      url: '/user/phone/number',
       params: {
         userId: this.data.userId,
         phoneNumber: this.data.phoneNumber
       },
       success: (res) => {
         console.log(res)
+        if (res.result == "313") {
+          this.showToast(res.message);
+        }
         // 返回上一页 提示设置成功
         if (res.result == 100) {
           wx.navigateBack({
@@ -65,6 +72,19 @@ Page({
         }
       }
     })
+  },
+  /**
+   * 提示
+   */
+  showToast(msg, callback) {
+    this.setData({ message: msg, $toast: { show: true } });
+    setTimeout(() => {
+      this.setData({ message: null, $toast: { show: false } }, () => {
+        if (callback) {
+          callback();
+        }
+      });
+    }, 1000)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

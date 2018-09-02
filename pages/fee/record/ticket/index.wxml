@@ -7,7 +7,7 @@
       </view>
       <view class="list-wrap">
         <view class="list-item">
-          <picker mode="date" value="{{date}}" fields="month" start="2015-09-01" bindchange="onDateChange">
+          <picker mode="date" value="{{date}}" fields="day" start="2015-09-01" bindchange="onDateChange">
             <wxc-list title="{{type == 0 ? '缴费时间' : '开票时间'}}" mode="none" desc="{{date ? date : '请选择'}}"></wxc-list>
           </picker>
         </view>
