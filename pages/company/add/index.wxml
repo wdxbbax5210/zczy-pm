@@ -10,8 +10,8 @@
       </view>
     </view>
     <view class="button-large-wrap">
-    <view class="save" bindtap="onConfirm">保存</view>
-        <!-- <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bindtap="onConfirm"></wxc-button> -->
+    <!-- <view class="save" bindtap="onConfirm">保存</view> -->
+         <wxc-button size="large" type="danger" loading="{{false}}" value="保存" bind:submit="onConfirm"></wxc-button> 
       </view>
     <wxc-toast class="wxc-dialog" is-show="{{$toast.show}}" text="{{message?message:'信息填写不完整'}}" confirm-text="知道了" bindconfirm="btnConfirm">
     </wxc-toast>

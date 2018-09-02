@@ -174,7 +174,7 @@ Page({
           })
         } else {
           wx.redirectTo({
-            url: '../list/index' 
+            url: '../list/index?operateRight=1' 
           });
         }
       },
