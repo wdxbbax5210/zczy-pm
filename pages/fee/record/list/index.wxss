@@ -1,4 +1,21 @@
 /* pages/fee/record/list/index.wxss */
+.searchTop{
+  height: 60rpx;
+  padding: 20rpx 30rpx;
+  background-color: #efefef;
+  border-bottom: 1px solid #e4e4e4;
+}
+.searchTop .input{
+  border: 1px solid #e4e4e4;
+  height: 66rpx;
+  line-height: 66rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  /*margin-top:24rpx;*/
+  border-radius:8rpx;
+  background-color: #fff;
+}
 .page {
   position:absolute;
   top:0;
