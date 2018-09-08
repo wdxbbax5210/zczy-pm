@@ -99,7 +99,6 @@ Page({
     let params = {
       userType: this.data.userType, //查询的用户类型列表
       nickName: null, //昵称
-      unitNumber: null, //单元编号
       phoneNumber: null, //手机号码
       page: this.data.page,
       pageSize: this.data.pageSize

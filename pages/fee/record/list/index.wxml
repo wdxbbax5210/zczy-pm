@@ -34,11 +34,8 @@
       <view class="feed-item">
         <view class="feed-source">
           <a class="">
-            <view wx:if='{{item.avatarUrl}}' class="avatar">
-              <image src="{{item.avatarUrl}}"></image>
-            </view>
             <text>单元：{{item.unitNumber}}</text>
-            <text style='margin-left:15rpx;'>昵称：{{item.nickName}}</text>
+            <text style='margin-left:15rpx;'>租户：{{item.companyName}}</text>
           </a>
           <picker class="item-more" bindchange="bindhandleEdit" range="{{editButtons}}" wx:if="{{operateRight}}" data-id="{{item.id}}" data-amount="{{item.planPayFee}}" data-item="{{item}}">
             <image class="item-more" mode="aspectFit" src="../../../../images/more.png"></image>

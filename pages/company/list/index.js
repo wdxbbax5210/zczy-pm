@@ -13,6 +13,9 @@ Page({
     }, {
       key: 1,
       name: '删除'
+    }, {
+      key: 2,
+      name: '编辑单元编号'
     }],
     page: 1,
     pageSize: 10,
@@ -24,23 +27,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     util.setTitle("租户企业");
-    this.getCompanyList();
+    //this.getCompanyList();
   },
-  Add: function () {
+
+  Add: function() {
     let t = this;
     wx.navigateTo({
       url: '../add/index',
     })
   },
-  Edit: function (companyId, companyName, unitNumber) {
+
+  Edit: function(companyId, companyName, unitNumber) {
     let t = this;
     wx.navigateTo({
       url: '../add/index?companyName=' + companyName + '&itemId=' + companyId + '&unitNumber=' + unitNumber
     })
   },
-  Del: function (companyId) {
+
+  Del: function(companyId) {
     let params = {
       companyId: companyId //企业ID
     }
@@ -54,7 +60,15 @@ Page({
       }
     })
   },
-  makeOption: function (event) {
+
+  UnitList: function (companyId) {
+    let t = this;
+    wx.navigateTo({
+      url: '../unit/list/index?companyId=' + companyId
+    })
+  },
+
+  makeOption: function(event) {
     let value = event.detail.value;
     let buttons = this.data.buttons;
     let button = buttons[value];
@@ -73,8 +87,15 @@ Page({
     if (option == 1) {
       let companyId = event.target.dataset.id;
       this.Del(companyId);
+      return;
+    }
+    if (option == 2) {
+      let companyId = event.target.dataset.id;
+      this.UnitList(companyId);
+      return;
     }
   },
+
   getCompanyList() {
     let params = {
       companyName: this.data.companyName, //非必填 
@@ -93,53 +114,54 @@ Page({
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    //this.getCompanyList()
+  onShow: function() {
+    this.getCompanyList();
     console.log("onShow")
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

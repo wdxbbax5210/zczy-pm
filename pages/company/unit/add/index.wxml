@@ -1,9 +1,9 @@
-<!--pages/company/add/index.wxml-->
+<!--pages/company/unit/add/index.wxml-->
 <view class='main'>
   <view class="section">
     <view class="container">
       <view class="input-wrap">
-        <wxc-input type="text" mode="none" title="租户名称" placeholder="请输入租户名称" value="{{companyName}}" bindinput='OnNameChange'></wxc-input>
+        <wxc-input type="text" mode="none" title="单元编号" placeholder="请输入单元编号" value="{{unitNumber}}" bindinput='OnUnitChange'></wxc-input>
       </view>
     </view>
     <view class="button-large-wrap">

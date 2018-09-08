@@ -31,7 +31,6 @@
               <view class="question">
                 <a class="question-link">
                   <text>企业:{{item.companyName || "暂无"}}</text>
-                  <text style='margin-left:15rpx;'>单元编号:{{item.unitNumber || "暂无"}}</text>
                 </a>
               </view>
               <view class="question">

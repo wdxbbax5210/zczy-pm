@@ -17,7 +17,9 @@
     "pages/company/list/index",
     "pages/company/edit/index",
     "pages/company/select/index",
-    "pages/fee/record/ticket/index"
+    "pages/fee/record/ticket/index",
+    "pages/company/unit/list/index",
+    "pages/company/unit/add/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

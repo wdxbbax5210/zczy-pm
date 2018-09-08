@@ -36,7 +36,7 @@ Page({
     }
     console.log(params)
     util.NetRequest({
-      url: '/lessee/company/list',
+      url: '/lessee/company/unit/list',
       params: params,
       success: (res) => {
         console.log(res.data, "企业列表")

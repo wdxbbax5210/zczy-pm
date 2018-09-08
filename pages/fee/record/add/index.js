@@ -149,6 +149,7 @@ Page({
     }
     let params = {
       companyId: this.data.companyId,
+      unitNumber: this.data.unitNumber,
       planPayFee: this.data.amount || null,
       itemId: this.data.itemId || null,
       theMonth: this.data.date || null,
@@ -169,8 +170,7 @@ Page({
           t.setData({
             message: res.message
           }, () => {
-            let dialogComponent = t.selectComponent('.wxc-dialog')
-            dialogComponent && dialogComponent.show();
+            this.showToast(res.message);
           })
         } else {
           wx.redirectTo({

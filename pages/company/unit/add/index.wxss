@@ -1,0 +1,120 @@
+/* pages/company/unit/add/index.wxss */
+
+.section {
+  background-color: #fff;
+  padding: 24rpx;
+}
+
+.input {
+  font-size: 28rpx;
+  color: #333;
+  border: 1px solid #e4e4e4;
+  padding: 0 20rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border-radius: 8rpx;
+  margin: 24rpx 30rpx;
+}
+
+.add {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin: 0 30rpx;
+  margin-top: 48rpx;
+}
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.input-wrap {
+  width: 100%;
+  background: #fff;
+}
+
+.list-wrap {
+  width: 100%;
+  background: #fff;
+}
+
+.list-wrap .list-item {
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.list-wrap .list-item:last-child {
+  margin: 0;
+}
+
+.list-wrap .list-check {
+  display: flex;
+  align-items: center;
+}
+
+.list-wrap .check-wrap {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  border-radius: 100%;
+  border: 1px solid #d8d8d8;
+}
+
+.list-wrap .check {
+  position: absolute;
+  top: 0;
+  left: -2rpx;
+  width: 100%;
+  height: 100%;
+  line-height: 42rpx;
+}
+
+.list-wrap .list-image {
+  width: 102rpx;
+  height: 102rpx;
+  margin-left: 30rpx;
+}
+
+.list-wrap .radius {
+  border-radius: 100px;
+}
+
+.list-wrap .item {
+  flex: 1;
+}
+
+.list-wrap .list-image {
+  width: 102rpx;
+  height: 102rpx;
+  background: #d8d8d8;
+}
+
+.button-wrap {
+  margin: 0 0 10rpx 35rpx;
+  float: left;
+}
+
+.button-large-wrap {
+  margin-top: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.button-small-wrap {
+  margin: 0 0 10rpx 30rpx;
+  float: left;
+}
+.save {
+  margin: 0 30rpx;
+  background-color: #dc3545;
+  color: #fff;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+}
