@@ -17,7 +17,7 @@
   background-color: #fff;
 }
 .bottom {
-  height: 118rpx;
+  height: 130rpx;
   background: #F0F4F3;
   position: fixed;
   bottom:0;
@@ -65,7 +65,7 @@
 .scroll-view {
   position: absolute;
   top: 110rpx;
-  bottom: 0;
+  bottom: 130rpx;
   left: 0;
   right: 0;
   -webkit-overflow-scrolling: touch;
@@ -75,6 +75,7 @@
 
 .container {
   height: 100%;
+  bottom: 130rpx;
   display: flex;
   flex-direction: column;
   align-items: center;

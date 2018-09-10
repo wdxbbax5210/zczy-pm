@@ -109,12 +109,24 @@ Page({
       success: (res) => {
         let _list = res.data.list || [];
         t.setData({
-          companyList: _list
+          companyList: this.data.page > 1 ? this.data.companyList.concat(_list) : _list ,
+          count: res.data.count
         })
       }
     })
   },
-
+  lower: function (e) {
+    if (this.data.page * this.data.pageSize < this.data.count) {
+      console.log("到底了！请求下一页")
+      this.setData({
+        page: this.data.page + 1
+      }, () => {
+        this.getCompanyList();
+      })
+    } else {
+      console.log("没有数据了")
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
