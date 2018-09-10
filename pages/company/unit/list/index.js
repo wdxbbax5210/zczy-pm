@@ -81,12 +81,24 @@ Page({
       success: (res) => {
         let _list = res.data.list || [];
         t.setData({
-          companyUnitList: _list
+          companyUnitList: this.data.page > 1 ? this.data.companyUnitList.concat(_list) : _list,
+          count: res.data.count
         })
       }
     })
   },
-
+  lower: function (e) {
+    if (this.data.page * this.data.pageSize < this.data.count) {
+      console.log("到底了！请求下一页")
+      this.setData({
+        page: this.data.page + 1
+      }, () => {
+        this.getCompanyUnitList();
+      })
+    } else {
+      console.log("没有数据了")
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
