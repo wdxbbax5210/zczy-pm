@@ -21,6 +21,7 @@ Page({
     pageSize: 10,
     count: 0,
     companyName: null,
+    canLower: true, //触底函数控制变量
     userInfo: wx.getStorageSync("userInfo")
   },
 
@@ -61,7 +62,7 @@ Page({
     })
   },
 
-  UnitList: function (companyId) {
+  UnitList: function(companyId) {
     let t = this;
     wx.navigateTo({
       url: '../unit/list/index?companyId=' + companyId
@@ -103,29 +104,36 @@ Page({
       pageSize: this.data.pageSize
     }
     let t = this;
+    t.setData({
+      canLower: false, // 触底函数关闭
+    });
     util.NetRequest({
       url: '/lessee/company/list',
       params: params,
       success: (res) => {
         let _list = res.data.list || [];
         t.setData({
-          companyList: this.data.page > 1 ? this.data.companyList.concat(_list) : _list ,
+          canLower: true, //有新数据，触底函数开启，为下次触底调用做准备
+          companyList: this.data.page > 1 ? this.data.companyList.concat(_list) : _list,
           count: res.data.count
         })
       }
     })
   },
-  lower: function (e) {
-    if (this.data.page * this.data.pageSize < this.data.count) {
-      console.log("到底了！请求下一页")
-      this.setData({
-        page: this.data.page + 1
-      }, () => {
-        this.getCompanyList();
-      })
-    } else {
-      console.log("没有数据了")
+  lower: function(e) {
+    /* ------------------------- */
+    if (!this.data.canLower) return; //如果触底函数不可用，则不调用网络请求数据
+    /* ------------------------- */
+    if (this.data.page * this.data.pageSize >= this.data.count) {
+      console.log("没有数据了");
+      return;
     }
+    console.log("到底了！请求下一页");
+    this.setData({
+      page: this.data.page + 1
+    }, () => {
+      this.getCompanyList();
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

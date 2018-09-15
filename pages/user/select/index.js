@@ -12,6 +12,7 @@ Page({
     pageSize: 10,
     count: 0,
     itemId: null,
+    canLower: true, //触底函数控制变量
   },
 
   /**
@@ -35,18 +36,41 @@ Page({
       page: this.data.page,
       pageSize: this.data.pageSize
     }
+    t.setData({
+      canLower: false, // 触底函数关闭
+    });
     console.log(params)
     util.NetRequest({
       url: '/user/list',
       params: params,
       success: (res) => {
         console.log(res.data, "用户列表")
-        this.setData({
-          userList: res.data.list || [],
+        let _list = res.data.list || [];
+        if (params.page > 1) {
+          _list = t.data.list.concat(res.data.list)
+        }
+        t.setData({
+          canLower: true, //有新数据，触底函数开启，为下次触底调用做准备
+          userList: _list,
           count: res.data.count
         })
       }
     })
+  },
+  lower() {
+    /* ------------------------- */
+    if (!this.data.canLower) return; //如果触底函数不可用，则不调用网络请求数据
+    /* ------------------------- */
+    if (this.data.page * this.data.pageSize >= this.data.count) {
+      console.log("没有数据了");
+      return;
+    }
+    console.log("到底了！请求下一页");
+    this.setData({
+      page: this.data.page + 1
+    }, () => {
+      this.getUserList();
+    });
   },
   /**
    * 搜索用户

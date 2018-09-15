@@ -2,7 +2,7 @@
 <view class="searchTop">
   <input type="text" class="input" placeholder='搜索' value="{{userName}}" bindinput='onNameChange' />
 </view>
-<scroll-view scroll-y style="height: auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{userList.length}}" class="scroll-view container">
+<scroll-view scroll-y style="height: auto;" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" wx:if="{{userList.length}}" class="scroll-view container">
   <view class="userlist" wx:for="{{userList}}" wx:for-index="index" wx:key="{{item.id}}">
     <view class="feed-item t-FBH" bindtap='onSelectUser' data-id="{{item.id}}" data-name="{{item.nickName}}">
       <view>

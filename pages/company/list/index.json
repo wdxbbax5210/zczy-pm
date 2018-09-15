@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "wxc-toast": "../../../../dist/packages/@minui/wxc-toast/dist/index",
     "wxc-dialog": "../../../../dist/packages/@minui/wxc-dialog/dist/index",

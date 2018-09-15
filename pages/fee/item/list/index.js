@@ -16,16 +16,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.setTitle("收费项目")
+    util.setTitle("收费项目");
   },
+
   Add: function () {
     let t = this;
-    // let dialogComponent = t.selectComponent('.wxc-dialog')
-    // dialogComponent && dialogComponent.show();
     wx.redirectTo({
       url: '../add/index',
     })
   },
+
   Edit: function (event) {
     let t = this;
     wx.redirectTo({
@@ -33,7 +33,7 @@ Page({
     })
   },
 
-  getFeeList() {
+  getFeeItemList() {
     let params = {
       itemName: this.data.itemName, //非必填 
       page: this.data.page,
@@ -44,30 +44,14 @@ Page({
       url: '/fee/item/list',
       params: params,
       success: (res) => {
+        let _list = res.data.list || [];
         t.setData({
-          feeItemList: res.data.list || []
+          feeItemList: _list
         })
       }
     })
   },
-  // onConfirm: function(){
-  //   if(this.data.itemId){
-  //     this.feeItemUpdate();
-  //   }else{
-  //     this.feeItemAdd();
-  //   }
-  //   let dialogComponent = this.selectComponent('.wxc-dialog')
-  //   dialogComponent && dialogComponent.hide();
-  // },
-  // onCancel: function(){
-  //   let dialogComponent = this.selectComponent('.wxc-dialog')
-  //   dialogComponent && dialogComponent.hide();
-  //   this.setData({
-  //     itemName: null,
-  //     itemId: null
-  //   })
-  // },
-
+  
   feeItemDel: function (event) {
     let params = {
       itemId: event.target.dataset.id, //项目Id 必填
@@ -77,11 +61,12 @@ Page({
       url: "/fee/item/del",
       params: params,
       success: (data) => {
-        console.log(data.data, "删除收费项目")
-        t.getFeeList()
+        console.log(data.data, "删除收费项目");
+        t.getFeeItemList();
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -93,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getFeeList();
+    this.getFeeItemList();
   },
 
   /**

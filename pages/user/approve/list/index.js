@@ -66,6 +66,7 @@ Page({
       }]
     },
     edit: null,
+    canLower: true, //触底函数控制变量
     ifShowToast: false
   },
   onChangeTab(event) {
@@ -104,6 +105,9 @@ Page({
       pageSize: this.data.pageSize
     }
     let t = this;
+    t.setData({
+      canLower: false, // 触底函数关闭
+    });
     util.NetRequest({
       url: '/user/list',
       params: params,
@@ -113,7 +117,8 @@ Page({
         if (params.page > 1) {
           _list = t.data.list.concat(res.data.list)
         }
-        this.setData({
+        t.setData({
+          canLower: true, //有新数据，触底函数开启，为下次触底调用做准备
           list: _list,
           count: res.data.count
         })
@@ -121,16 +126,19 @@ Page({
     })
   },
   lower() {
-    if (this.data.page * this.data.pageSize < this.data.count) {
-      console.log("到底了！请求下一页")
-      this.setData({
-        page: this.data.page + 1
-      }, () => {
-        this.queryUserList();
-      })
-    } else {
-      console.log("没有数据了")
+    /* ------------------------- */
+    if (!this.data.canLower) return; //如果触底函数不可用，则不调用网络请求数据
+    /* ------------------------- */
+    if (this.data.page * this.data.pageSize >= this.data.count) {
+      console.log("没有数据了");
+      return;
     }
+    console.log("到底了！请求下一页");
+    this.setData({
+      page: this.data.page + 1
+    }, () => {
+      this.queryUserList();
+    });
   },
   /**
    * 设置用户身份
