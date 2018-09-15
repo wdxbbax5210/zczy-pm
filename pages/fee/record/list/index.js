@@ -212,7 +212,7 @@ Page({
     let tab = null == tabs ? null : (tabs[tabSelected] || null);
     let itemName = null == tab ? null : tab.itemName;
     let pay = array[selected] || null;
-    let payStatus = null == pay ? null : (pay.key || null);
+    let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
     let params = {
       itemName: itemName || null,
       nickName: userInfo.nickName || null,
@@ -254,6 +254,14 @@ Page({
     wx.redirectTo({
       url: '../add/index?editMode=add'
     })
+  },
+  showPopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.show();
+  },
+  hidePopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.hide();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
