@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wxc-button": "../../../../dist/packages/@minui/wxc-button/dist/index"
+  }
+}

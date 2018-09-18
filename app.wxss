@@ -48,3 +48,21 @@
 .t-FB1 {
   flex: 1;
 }
+.t-omit, .t-omit2, .t-omit3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.t-omit {
+  -webkit-line-clamp: 1;
+}
+
+.t-omit2 {
+  -webkit-line-clamp: 2;
+}
+
+.t-omit3 {
+  -webkit-line-clamp: 3;
+}

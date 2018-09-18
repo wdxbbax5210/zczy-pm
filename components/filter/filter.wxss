@@ -1,0 +1,42 @@
+/* components/filter/filter.wxss */
+.filters {
+  position:absolute;
+  /* top:88rpx; */
+  top:-688rpx;
+  left:0;
+  right:0;
+  z-index:10;
+  background-color:#fff;
+  border-bottom:1px solid #f2f2f2;
+  border-top:1px solid #f2f2f2;
+  min-height:600rpx;
+  display: flex;
+  flex-direction: column
+}
+.topArea {
+  flex: 1
+}
+.topArea,.bottom-btn {
+  display: flex;
+}
+.bottom-btn{
+  padding: 30rpx;
+  padding-right: 0;
+}
+.btn {
+  flex: 1;
+  font-size:12px;
+  margin-right: 30rpx;
+}
+.leftName {
+   width: 200rpx;
+   border-right:1px solid #f2f2f2;
+  }
+.show {
+  top: 88rpx;
+}
+.filterArea {
+  flex: 1;
+  text-align:left;
+  padding:0 20rpx;
+}

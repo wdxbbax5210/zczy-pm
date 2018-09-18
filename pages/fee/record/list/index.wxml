@@ -10,11 +10,16 @@
           </view>
         </picker>
       </view>
-      <view class="filterItem t-FB1" bindtap="showPopup">
-        <view class="picker">
+      <view class="filterItem t-FB1">
+        <view class="picker" bindtap="showPopup">
           <text>筛选</text>
           <image src="../../../../images/filter.png"></image>
         </view>
+        <filter 
+          showclass="{{showFilter ? 'show' : ''}}"
+          bind:resetFilter="resetFilter"
+          bind:confirmFilter="confirmFilter"
+          />
       </view>
       <!-- <view class="filterItem t-FB1">
         <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
@@ -34,7 +39,7 @@
       </view> -->
     </view>
   </view>
-  <wxc-popup class="J_Popup" animation-mode="top" align="top">
+  <!-- <wxc-popup class="J_Popup" animation-mode="top" align="top"> -->
     <view class="popup__content">
       <view class="filter t-FBH">
         <view class="filterItem t-FB1">
@@ -55,15 +60,15 @@
         </view>
       </view>
     </view>
-  </wxc-popup>
+  <!-- </wxc-popup> -->
   <scroll-view scroll-y bindscrolltolower="lower" scroll-top="{{scrollTop}}" class="{{operateRight ? 'scroll-view container' : 'scroll-view container no-bottom'}} ">
     <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
       <view class="feed-item">
-        <view class="feed-source">
-          <a class="">
+        <view class="feed-source t-FBH">
+          <view class="t-FBH t-omit t-FB1">
             <text>单元：{{item.unitNumber}}</text>
-            <text style='margin-left:15rpx;'>租户：{{item.companyName}}</text>
-          </a>
+            <text style='margin-left:15rpx;' class="t-FB1">租户：{{item.companyName}}</text>
+          </view>
           <picker class="item-more" bindchange="bindhandleEdit" range="{{editButtons}}" wx:if="{{operateRight}}" data-id="{{item.id}}" data-amount="{{item.planPayFee}}" data-item="{{item}}">
             <image class="item-more" mode="aspectFit" src="../../../../images/more.png"></image>
           </picker>
