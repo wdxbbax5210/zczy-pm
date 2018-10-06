@@ -94,6 +94,16 @@ const isEmptyString = val => {
   return false;
 };
 
+const inArray = (value, array) => {
+  var i = array.length;
+  while (i--) {
+    if (array[i] == value) {
+      return true;
+    }
+  }
+  return false;
+};
+
 module.exports = {
   formatTime: formatTime,
   setTitle: setTitle,
@@ -101,6 +111,7 @@ module.exports = {
   hideLoading: hideLoading,
   getUserInfo: getUserInfo,
   NetRequest: NetRequest,
+  inArray: inArray,
   isEmptyObj: isEmptyObj,
   isEmptyString: isEmptyString
 }

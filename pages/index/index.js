@@ -27,17 +27,25 @@ Page({
     interval: 5000,
     duration: 1000,
     userInfo: null,
-    ifHaveRight: false, //当前用户身份是否在员工及以上
-    ifShowTenant: false, //是否显示租户企业
+    showFeeOwnerRecordIcon: true, // 是否显示费用查询按钮
+    showFeeRecordManageIcon: false, // 是否显示费用录入按钮
+    showItemManageIcon: false, // 是否显示收费项目管理按钮
+    showCompanyManageIcon: false // 是否显示租户企业按钮
   },
   goQueryOperate: function () {
+    let operateRight = '';
+    let t = this;
+    let userType = t.data.userInfo.userType;
+    if (util.inArray(userType, ["7", "8", "9"])) {
+      operateRight = 1;
+    }
     wx.navigateTo({
-      url: '../fee/record/list/index?operateRight=1',
+      url: '../fee/record/list/index?operateRight=' + operateRight,
     })
   },
   goQuery: function () {
     wx.navigateTo({
-      url: '../fee/record/list/index',
+      url: '../fee/record/owner/index',
     })
   },
   goToFeeList: function () {
@@ -70,6 +78,7 @@ Page({
             params: params,
             success: (res) => {
               let userInfo = res.data.userInfo;
+              // 用户类型：0、未知 1、普通用户 6、普通员工 7、维护员工 8、管理员 9、超级管理员
               let userType = (userInfo && !util.isEmptyObj(userInfo)) ? userInfo.userType : null;
               // 没有授权 引导用户授权登录 或者拒绝审核后
               if (null == userType || userType == -1) {
@@ -84,22 +93,33 @@ Page({
               }
               // 注册过
               getApp().globalData.header.Cookie = 'JSESSIONID=' + userInfo.sessionId;
-              let ifHaveRight = false, ifShowTenant = false;
-              //当前用户不是未知身份 且不是普通用户
-              if (userInfo.userType != "0" && userInfo.userType != "1") {
-                ifHaveRight = true
+              // 参数定义
+              let showFeeOwnerRecordIcon = true, showFeeRecordManageIcon = false, 
+                showItemManageIcon = false, showCompanyManageIcon = false; 
+              // 是否显示费用查询按钮
+              if (util.inArray(userType, ["6", "7", "8"])) {
+                // 6、普通员工 7、维护员工 8、管理员的情况下不显示
+                showFeeOwnerRecordIcon = false;
               }
-              if(userInfo.userType == "9"){
-                ifShowTenant = true
+              // 是否显示费用录入按钮
+              // 是否显示收费项目管理按钮
+              // 是否显示租户企业按钮
+              if (util.inArray(userType, ["6", "7", "8", "9"])) {
+                // 6、普通员工 7、维护员工 8、管理员 9、超级管理员的情况下显示
+                showFeeRecordManageIcon = true;
+                showItemManageIcon = true;
+                showCompanyManageIcon = true;
               }
               t.setData({
                 userInfo: userInfo,
-                ifHaveRight: ifHaveRight,
-                ifShowTenant: ifShowTenant
+                showFeeOwnerRecordIcon: showFeeOwnerRecordIcon,
+                showFeeRecordManageIcon: showFeeRecordManageIcon,
+                showItemManageIcon: showItemManageIcon,
+                showCompanyManageIcon: showCompanyManageIcon
               })
             
               wx.setStorageSync("userInfo", userInfo)
-              if (userInfo.userType == "0") { //当前用户身份未知时跳转到等待页面
+              if (userType == "0") { //当前用户身份未知时跳转到等待页面
                 wx.reLaunch({
                   url: '../user/access/index'
                 })
@@ -128,19 +148,13 @@ Page({
   },
   //确认授权
   onConfirm() {
-    // this.login();
-    // wx.switchTab({
-    //   url: '../my/my',
-    // })
     wx.navigateTo({
       url: '../register/register',
     })
     this.hideDialog();
   },
   upload() {
-    // wx.openDocument({
-
-    // })
+  
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

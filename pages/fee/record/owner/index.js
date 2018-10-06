@@ -1,4 +1,4 @@
-// pages/fee/record/list/index.js
+// pages/fee/record/owner/index.js
 import util from "../../../../utils/util.js";
 // 仅限查询数据 
 Page({
@@ -9,8 +9,7 @@ Page({
     userInfo: {},
     tabs: [],
     tabIndex: 0,
-    tabSelected: 0,
-    selected: 0,
+    selectedPay: 0,
     index: 0,
     array: [{
       key: null,
@@ -24,7 +23,6 @@ Page({
     }],
     date: '',
     list: [],
-    operateRight: null,
     status: ["缴费", "开票"],
     editButtons: ["编辑", "删除"],
     selectedStatus: 0,
@@ -37,7 +35,7 @@ Page({
   /**
    * 切换月份
    */
-  bindDateChange: function(e) {
+  bindDateChange: function (e) {
     console.log('月份选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
@@ -45,7 +43,7 @@ Page({
       this.onQueryDetailList();
     })
   },
-  lower: function(e) {
+  lower: function (e) {
     /* ------------------------- */
     if (!this.data.canLower) return; //如果触底函数不可用，则不调用网络请求数据
     /* ------------------------- */
@@ -63,51 +61,19 @@ Page({
   /**
    * 选择缴费状态
    */
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     console.log('缴费状态选择改变，携带值为', e.detail.value)
     this.setData({
-      selected: e.detail.value
+      selectedPay: e.detail.value
     }, () => {
       this.onQueryDetailList();
     })
-  },
-  /**
-   * 选择收费项目
-   */
-  bindItemChange: function(e) {
-    console.log('收费项目改变，携带值为', e.detail.value)
-    this.setData({
-      tabSelected: e.detail.value
-    }, () => {
-      this.onQueryDetailList();
-    })
-  },
-  /**
-   * 切换收费项目
-   */
-  onClick: function(e) {
-    this.setData({
-      date: "",
-      index: e.detail.key,
-      page: 1,
-      count: 0
-    }, () => {
-      this.onQueryDetailList();
-    })
-    console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     util.setTitle("费用查询");
-    console.log(options.operateRight)
-    if (options.operateRight) {
-      this.setData({
-        operateRight: options.operateRight
-      })
-      util.setTitle("费用录入");
-    }
     let _userInfo = wx.getStorageSync("userInfo").data
     if (_userInfo) {
       this.setData({
@@ -171,53 +137,23 @@ Page({
     })
   },
   /**
-   * 获取收费项目列表 赋值给tabs
-   */
-  getFeeItemList() {
-    let params = {
-      itemName: null, //非必填
-      page: 1,
-      pageSize: 99
-    }
-    util.NetRequest({
-      url: '/fee/item/list',
-      params: params,
-      success: (res) => {
-        console.log(res.data)
-        let list = res.data && res.data.list || [];
-        list.unshift({ id: 0, itemName: "请选择费项" });
-        this.setData({
-          tabs: list,
-        }, () => {
-          this.onQueryDetailList()
-        })
-        console.log(res.data, "收费项目列表")
-      }
-    })
-  },
-  /**
    * 查询对应收费项目的详情列表 赋值给list
    */
   onQueryDetailList() {
     let t = this,
       {
         tabs,
-        selected,
+        selectedPay,
         userInfo,
         date,
         index,
         array,
-        tabIndex,
-        tabSelected
+        tabIndex
       } = t.data;
-    let url = "/fee/record/list";
-    let tab = null == tabs ? null : (tabs[tabSelected] || null);
-    let itemId = null == tab ? null : tab.id;
-    let itemName = (null == tab || null == itemId || itemId == 0) ? null : tab.itemName;
-    let pay = array[selected] || null;
+    let url = "/fee/record/owner/list";
+    let pay = array[selectedPay] || null;
     let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
     let params = {
-      itemName: itemName || null,
       nickName: userInfo.nickName || null,
       unitNumber: userInfo.unitNumber || null,
       phoneNumber: userInfo.phoneNumber || null,
@@ -250,66 +186,51 @@ Page({
       }
     })
   },
-  /**
-   * 新增收费记录
-   */
-  onAddRecord() {
-    wx.redirectTo({
-      url: '../add/index?editMode=add'
-    })
-  },
-  showPopup() {
-    let popupComponent = this.selectComponent('.J_Popup');
-    popupComponent && popupComponent.show();
-  },
-  hidePopup() {
-    let popupComponent = this.selectComponent('.J_Popup');
-    popupComponent && popupComponent.hide();
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    this.getFeeItemList();
+  onShow: function () {
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

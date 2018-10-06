@@ -1,21 +1,7 @@
-<!--pages/fee/record/list/index.wxml-->
+<!--pages/fee/record/owner/index.wxml-->
 <view class="page">
-  <view wx:if="{{tabs.length}}" class="tab" active-text-color="#38ADFF" active-line-color="#38ADFF" line-color="#ededed">
+  <view class="tab" active-text-color="#38ADFF" active-line-color="#38ADFF" line-color="#ededed">
     <view class="filter t-FBH">
-      <view class="filterItem t-FB1">
-        <picker bindchange="bindItemChange" value="{{tabIndex}}" range-key='itemName' range="{{tabs}}">
-          <view class="picker">
-            <text>{{tabs[tabSelected].itemName}}</text>
-            <image src="../../../../images/arrow-down.png"></image>
-          </view>
-        </picker>
-      </view>
-      <!-- <view class="filterItem t-FB1" bindtap="showPopup">
-        <view class="picker">
-          <text>筛选</text>
-          <image src="../../../../images/filter.png"></image>
-        </view>
-      </view> -->
       <view class="filterItem t-FB1">
         <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
           <view class="picker">
@@ -34,28 +20,6 @@
       </view>
     </view>
   </view>
-  <!-- <wxc-popup class="J_Popup" animation-mode="top" align="top">
-    <view class="popup__content">
-      <view class="filter t-FBH">
-        <view class="filterItem t-FB1">
-          <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
-            <view class="picker">
-              <text>{{array[selected].name}}</text>
-              <image src="../../../../images/arrow-down.png"></image>
-            </view>
-          </picker>
-        </view>
-        <view class="filterItem t-FB1">
-          <picker mode="date" value="{{date}}" fields="month" start="2015-09" bindchange="bindDateChange">
-            <view class="picker">
-              <text>{{date?date: "所属月份"}}</text>
-              <image src="../../../../images/arrow-down.png"></image>
-            </view>
-          </picker>
-        </view>
-      </view>
-    </view>
-  </wxc-popup> -->
   <scroll-view scroll-y bindscrolltolower="lower" scroll-top="{{scrollTop}}" class="{{operateRight ? 'scroll-view container' : 'scroll-view container no-bottom'}} ">
     <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}" wx:if="{{list.length}}">
       <view class="feed-item">
@@ -97,14 +61,8 @@
         </view>
       </view>
     </view>
-    <view class="btn-view"></view>
     <view class="no-data" wx:if="{{list.length == 0}}">
       <wxc-abnor type="DATA" title="没有收费记录"></wxc-abnor>
     </view>
   </scroll-view>
-  <view class="bottom" wx:if="{{operateRight}}">
-    <button class="btn-add t-FB1 " type='default' bindtap='onAddRecord'>
-      新增记录
-    </button>
-  </view>
 </view>
