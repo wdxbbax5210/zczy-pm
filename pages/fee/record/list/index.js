@@ -10,7 +10,7 @@ Page({
     tabs: [],
     tabIndex: 0,
     tabSelected: 0,
-    selected: 0,
+    selectedPay: 0,
     index: 0,
     array: [{
       key: null,
@@ -67,7 +67,7 @@ Page({
   bindPickerChange: function(e) {
     console.log('缴费状态选择改变，携带值为', e.detail.value)
     this.setData({
-      selected: e.detail.value
+      selectedPay: e.detail.value
     }, () => {
       this.onQueryDetailList();
     })
@@ -186,7 +186,7 @@ Page({
       success: (res) => {
         console.log(res.data)
         let list = res.data && res.data.list || [];
-        list.unshift({ id: 0, itemName: "选择费项" });
+        list.unshift({ id: 0, itemName: "收费项目" });
         this.setData({
           tabs: list,
         }, () => {
@@ -203,7 +203,7 @@ Page({
     let t = this,
       {
         tabs,
-        selected,
+        selectedPay,
         userInfo,
         date,
         index,
@@ -215,7 +215,7 @@ Page({
     let tab = null == tabs ? null : (tabs[tabSelected] || null);
     let itemId = null == tab ? null : tab.id;
     let itemName = (null == tab || null == itemId || itemId == 0) ? null : tab.itemName;
-    let pay = array[selected] || null;
+    let pay = array[selectedPay] || null;
     let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
     let params = {
       itemName: itemName || null,

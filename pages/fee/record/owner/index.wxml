@@ -3,9 +3,17 @@
   <view class="tab" active-text-color="#38ADFF" active-line-color="#38ADFF" line-color="#ededed">
     <view class="filter t-FBH">
       <view class="filterItem t-FB1">
+        <picker bindchange="bindItemChange" value="{{tabIndex}}" range-key='itemName' range="{{tabs}}">
+          <view class="picker">
+            <text>{{tabs[tabSelected].itemName}}</text>
+            <image src="../../../../images/arrow-down.png"></image>
+          </view>
+        </picker>
+      </view>
+      <view class="filterItem t-FB1">
         <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
           <view class="picker">
-            <text>{{array[selected].name}}</text>
+            <text>{{array[selectedPay].name}}</text>
             <image src="../../../../images/arrow-down.png"></image>
           </view>
         </picker>

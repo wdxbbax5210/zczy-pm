@@ -37,10 +37,10 @@ Page({
     let t = this;
     let userType = t.data.userInfo.userType;
     if (util.inArray(userType, ["7", "8", "9"])) {
-      operateRight = 1;
+      operateRight = '?operateRight=1';
     }
     wx.navigateTo({
-      url: '../fee/record/list/index?operateRight=' + operateRight,
+      url: '../fee/record/list/index' + operateRight,
     })
   },
   goQuery: function () {

@@ -29,8 +29,11 @@ Page({
         key: 1,
         name: '设置为用户'
       }, {
-        key: 7,
+        key: 6,
         name: '设置为员工'
+      }, {
+        key: 7,
+        name: '设置为维护'
       }],
       9: [{
         key: -1,
@@ -39,8 +42,11 @@ Page({
         key: 1,
         name: '设置为用户'
       }, {
-        key: 7,
+        key: 6,
         name: '设置为员工'
+      }, {
+        key: 7,
+        name: '设置为维护'
       }, {
         key: 8,
         name: '设置为管理'
@@ -184,14 +190,14 @@ Page({
       this.redirectToEditCompany(userId, _item);
     }
   },
-  redirectToEditCompany: function (userId, _item) {
+  redirectToEditCompany: function(userId, _item) {
     let companyId = _item.companyId || '';
     let companyName = _item.companyName || '';
     wx.navigateTo({
       url: '../../../company/edit/index?from=approve&userId=' + userId + '&companyId=' + companyId + '&companyName=' + companyName,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
   redirectToEdit: function(userId, _item) {

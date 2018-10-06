@@ -20,7 +20,7 @@
       <view class="filterItem t-FB1">
         <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
           <view class="picker">
-            <text>{{array[selected].name}}</text>
+            <text>{{array[selectedPay].name}}</text>
             <image src="../../../../images/arrow-down.png"></image>
           </view>
         </picker>

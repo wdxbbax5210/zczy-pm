@@ -9,6 +9,7 @@ Page({
     userInfo: {},
     tabs: [],
     tabIndex: 0,
+    tabSelected: 0,
     selectedPay: 0,
     index: 0,
     array: [{
@@ -68,6 +69,31 @@ Page({
     }, () => {
       this.onQueryDetailList();
     })
+  },
+  /**
+   * 选择收费项目
+   */
+  bindItemChange: function (e) {
+    console.log('收费项目改变，携带值为', e.detail.value)
+    this.setData({
+      tabSelected: e.detail.value
+    }, () => {
+      this.onQueryDetailList();
+    })
+  },
+  /**
+   * 切换收费项目
+   */
+  onClick: function (e) {
+    this.setData({
+      date: "",
+      index: e.detail.key,
+      page: 1,
+      count: 0
+    }, () => {
+      this.onQueryDetailList();
+    })
+    console.log(`ComponentId:${e.detail.componentId},you selected:${e.detail.key}`);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -137,12 +163,38 @@ Page({
     })
   },
   /**
+   * 获取收费项目列表 赋值给tabs
+   */
+  getFeeItemList() {
+    let params = {
+      itemName: null, //非必填
+      page: 1,
+      pageSize: 99
+    }
+    util.NetRequest({
+      url: '/fee/item/list',
+      params: params,
+      success: (res) => {
+        console.log(res.data)
+        let list = res.data && res.data.list || [];
+        list.unshift({ id: 0, itemName: "收费项目" });
+        this.setData({
+          tabs: list,
+        }, () => {
+          this.onQueryDetailList()
+        })
+        console.log(res.data, "收费项目列表")
+      }
+    })
+  },
+  /**
    * 查询对应收费项目的详情列表 赋值给list
    */
   onQueryDetailList() {
     let t = this,
       {
         tabs,
+        tabSelected,
         selectedPay,
         userInfo,
         date,
@@ -151,9 +203,13 @@ Page({
         tabIndex
       } = t.data;
     let url = "/fee/record/owner/list";
+    let tab = null == tabs ? null : (tabs[tabSelected] || null);
+    let itemId = null == tab ? null : tab.id;
+    let itemName = (null == tab || null == itemId || itemId == 0) ? null : tab.itemName;
     let pay = array[selectedPay] || null;
     let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
     let params = {
+      itemName: itemName || null,
       nickName: userInfo.nickName || null,
       unitNumber: userInfo.unitNumber || null,
       phoneNumber: userInfo.phoneNumber || null,
@@ -196,7 +252,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getFeeItemList();
   },
 
   /**
