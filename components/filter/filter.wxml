@@ -1,0 +1,16 @@
+<!--components/filter/filter.wxml-->
+<view class="filters {{showclass}}" >
+  <view class='topArea '>
+    <view class="leftName">
+      <view>月份</view>
+      <view>种类</view>
+    </view>
+    <view class="filterArea t-FB1">
+      筛选部分
+    </view>
+  </view>
+  <view class="bottom-btn">
+    <button class='btn' bindtap="resetFilter">重置</button>
+    <button class='btn' type="primary"  bindtap="confirmFilter">确认</button>
+  </view>
+</view>

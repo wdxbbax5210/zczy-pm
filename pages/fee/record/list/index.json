@@ -10,6 +10,7 @@
     "wxc-list": "../../../../dist/packages/@minui/wxc-list/dist/index",
     "wxc-button": "../../../../dist/packages/@minui/wxc-button/dist/index",
     "wxc-abnor": "../../../../dist/packages/@minui/wxc-abnor/dist/index",
-    "wxc-popup": "../../../../dist/packages/@minui/wxc-popup/dist/index"
+    "wxc-popup": "../../../../dist/packages/@minui/wxc-popup/dist/index",
+    "filter": "../../../../components/filter/filter"
   }
 }

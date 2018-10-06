@@ -33,6 +33,7 @@ Page({
     pageSize: 10,
     count: 0,
     canLower: true, //触底函数控制变量
+    showFilter: false, 
   },
   /**
    * 切换月份
@@ -185,7 +186,7 @@ Page({
       success: (res) => {
         console.log(res.data)
         let list = res.data && res.data.list || [];
-        list.unshift({ id: 0, itemName: "请选择费项" });
+        list.unshift({ id: 0, itemName: "选择费项" });
         this.setData({
           tabs: list,
         }, () => {
@@ -259,12 +260,27 @@ Page({
     })
   },
   showPopup() {
-    let popupComponent = this.selectComponent('.J_Popup');
-    popupComponent && popupComponent.show();
+    console.log(this.selectComponent(".filters"))
+    this.setData({
+      showFilter: !this.data.showFilter
+    })
+    // let popupComponent = this.selectComponent('.J_Popup');
+    // popupComponent && popupComponent.show();
   },
   hidePopup() {
-    let popupComponent = this.selectComponent('.J_Popup');
-    popupComponent && popupComponent.hide();
+    // let popupComponent = this.selectComponent('.J_Popup');
+    // popupComponent && popupComponent.hide();
+  },
+  resetFilter(){
+    this.setData({
+      showFilter: false
+    })
+  },
+  confirmFilter(e){
+    console.log(e.detail, "传回的参数,重新请求列表")
+    this.setData({
+      showFilter: false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

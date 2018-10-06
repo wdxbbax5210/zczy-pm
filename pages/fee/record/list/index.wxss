@@ -83,6 +83,7 @@
   text-align: center;
   height: 88rpx;
   line-height: 88rpx;
+  position:relative;
 }
 
 .picker image {
@@ -244,9 +245,9 @@
 
 .container .feed-item .feed-source text {
   /*position: absolute;*/
-  display: inline-block;
+  /* display: inline-block; */
   height: 40rpx;
-  line-height: 40rpx;
+  line-height: 44rpx;
   vertical-align: middle;
   margin: 0 0 0 15rpx;
   color: #a0acac;
@@ -301,4 +302,7 @@
 
 .container .feed-item .feed-content .answer-actions .dot ::after {
   content: "•";
+}
+.show .filters {
+  top: 88rpx!important;
 }

@@ -7,6 +7,7 @@
     "wxc-flex": "../../../../../dist/packages/@minui/wxc-flex/dist/index",
     "wxc-tab": "../../../../../dist/packages/@minui/wxc-tab/dist/index",
     "wxc-tab-panel": "../../../../../dist/packages/@minui/wxc-tab/dist/panel",
-    "wxc-list": "../../../../../dist/packages/@minui/wxc-list/dist/index"
+    "wxc-list": "../../../../../dist/packages/@minui/wxc-list/dist/index",
+    "filter": "../../../../../components/"
   }
 }
