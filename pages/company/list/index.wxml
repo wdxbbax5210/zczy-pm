@@ -9,7 +9,7 @@
         <view>
           <view class="feed-source">
             <a class="">
-              <text style='margin-left:15rpx;'>企业名称：{{item.companyName}}</text>
+              <text style='margin-left:15rpx;' class="t-FB1">企业名称：{{item.companyName}}</text>
             </a>
           </view>
           <view class="feed-content">
