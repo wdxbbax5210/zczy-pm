@@ -2,37 +2,43 @@
 <view class="page">
   <view wx:if="{{tabs.length}}" class="tab" active-text-color="#38ADFF" active-line-color="#38ADFF" line-color="#ededed">
     <view class="filter t-FBH">
-      <view class="filterItem t-FB1">
+       <view class="filterItem t-FB1">
         <picker bindchange="bindItemChange" value="{{tabIndex}}" range-key='itemName' range="{{tabs}}">
           <view class="picker">
             <text>{{tabs[tabSelected].itemName}}</text>
             <image src="../../../../images/arrow-down.png"></image>
           </view>
         </picker>
-      </view>
-      <!-- <view class="filterItem t-FB1">
+      </view> 
+       <view class="filterItem t-FB1">
         <view class="picker" bindtap="showPopup">
           <text>筛选</text>
           <image src="../../../../images/filter.png"></image>
         </view>
-        <filter showclass="{{showFilter ? 'show' : ''}}" bind:resetFilter="resetFilter" bind:confirmFilter="confirmFilter" />
-      </view> -->
-      <view class="filterItem t-FB1">
+        <filter 
+        showclass="{{showFilter ? 'show' : ''}}" 
+        bind:resetFilter="resetFilter" 
+        bind:confirmFilter="confirmFilter"
+         />
+      </view> 
+        <!-- bind:handleStatusChange="bindPickerChange" -->
+      
+      <!-- <view class="filterItem t-FB1">
         <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}">
           <view class="picker">
             <text>{{array[selectedPay].name}}</text>
             <image src="../../../../images/arrow-down.png"></image>
           </view>
         </picker>
-      </view>
-      <view class="filterItem t-FB1">
+      </view> -->
+      <!-- <view class="filterItem t-FB1">
         <picker mode="date" value="{{date}}" fields="month" start="2015-09" bindchange="bindDateChange">
           <view class="picker">
             <text>{{date?date: "所属月份"}}</text>
             <image src="../../../../images/arrow-down.png"></image>
           </view>
         </picker>
-      </view>
+      </view> -->
     </view>
   </view>
   <!-- <wxc-popup class="J_Popup" animation-mode="top" align="top">

@@ -1,16 +1,47 @@
 <!--components/filter/filter.wxml-->
-<view class="filters {{showclass}}" >
-  <view class='topArea '>
-    <view class="leftName">
-      <view>月份</view>
-      <view>种类</view>
+<view class='mask {{showclass}}'>
+  <view class="filters" >
+    <view class='topArea '>
+      <view class="leftName">
+        <!-- <view>收费项目</view> -->
+        <view 
+          bindtap='handleSelect' 
+          data-name='feeStatus'
+          class="{{activeTab == 'feeStatus' ? 'active' : ''}}"
+          >
+          缴费状态
+        </view>
+        <view 
+          bindtap='handleSelect' 
+          data-name='month'
+          class="{{activeTab == 'month' ? 'active' : ''}}"
+          >
+          所属月份
+        </view>
+      </view>
+      <view 
+        class="filterArea t-FB1" 
+        wx:if="{{activeTab == 'feeStatus'}}"
+      >
+        <view
+          wx:for="{{statusArray}}" 
+          wx:for-index="index" 
+          wx:for-item="item" 
+          wx:key="{{item.key}}"
+          data-key="{{item.key}}"
+          bindtap='changeStatus'
+          class="{{activeKey == item.key ? 'active' : ''}}"
+        >{{item.name}}</view>
+      </view>
+      <view class="filterArea t-FB1 " wx:if="{{activeTab == 'month'}}">
+        <picker mode="date" value="{{date}}" fields="month" start="2015-09" bindchange="bindDateChange">
+          <text>{{date?date: "请选择"}}</text>
+        </picker>
+      </view>
     </view>
-    <view class="filterArea t-FB1">
-      筛选部分
+    <view class="bottom-btn">
+      <button class='btn' bindtap="resetFilter">重置</button>
+      <button class='btn' type="primary"  bindtap="confirmFilter">确认</button>
     </view>
-  </view>
-  <view class="bottom-btn">
-    <button class='btn' bindtap="resetFilter">重置</button>
-    <button class='btn' type="primary"  bindtap="confirmFilter">确认</button>
   </view>
 </view>

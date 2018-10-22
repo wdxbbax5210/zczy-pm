@@ -12,16 +12,16 @@ Page({
     tabSelected: 0,
     selectedPay: 0,
     index: 0,
-    array: [{
-      key: null,
-      name: '缴费状态'
-    }, {
-      key: 1,
-      name: '已缴费'
-    }, {
-      key: 0,
-      name: '未缴费'
-    }],
+    // array: [{
+    //   key: null,
+    //   name: '缴费状态'
+    // }, {
+    //   key: 1,
+    //   name: '已缴费'
+    // }, {
+    //   key: 0,
+    //   name: '未缴费'
+    // }],
     date: '',
     list: [],
     operateRight: null,
@@ -215,15 +215,15 @@ Page({
     let tab = null == tabs ? null : (tabs[tabSelected] || null);
     let itemId = null == tab ? null : tab.id;
     let itemName = (null == tab || null == itemId || itemId == 0) ? null : tab.itemName;
-    let pay = array[selectedPay] || null;
-    let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
+    // let pay = array[selectedPay] || null;
+    // let payStatus = null == pay ? null : (null == pay.key ? null : pay.key);
     let params = {
       itemName: itemName || null,
       nickName: userInfo.nickName || null,
       unitNumber: userInfo.unitNumber || null,
       phoneNumber: userInfo.phoneNumber || null,
       theMonth: date || null,
-      payStatus: payStatus,
+      payStatus: selectedPay,
       payTimeFrom: null, //缴费时间
       payTimeTo: null,
       ticketTimeFrom: null, //开票时间
@@ -271,15 +271,14 @@ Page({
     // let popupComponent = this.selectComponent('.J_Popup');
     // popupComponent && popupComponent.hide();
   },
-  resetFilter(){
-    this.setData({
-      showFilter: false
-    })
-  },
   confirmFilter(e){
     console.log(e.detail, "传回的参数,重新请求列表")
     this.setData({
-      showFilter: false
+      showFilter: false,
+      selectedPay: e.detail.activeKey,
+      date: e.detail.date
+    },()=>{
+      this.onQueryDetailList()
     })
   },
   /**
