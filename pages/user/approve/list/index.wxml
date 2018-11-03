@@ -7,7 +7,7 @@
     <view class="tab-item t-FB1 {{userType == 1 ? 'active':''}}" data-active="1" bindtap='onChangeTab' wx:if="{{myUserType > 1 }}">
       普通用户
     </view>
-    <view class="tab-item t-FB1 {{userType == 6 ? 'active':''}}" data-active="7" bindtap='onChangeTab' wx:if="{{myUserType > 6 }}">
+    <view class="tab-item t-FB1 {{userType == 6 ? 'active':''}}" data-active="6" bindtap='onChangeTab' wx:if="{{myUserType > 6 }}">
       普通员工
     </view>
     <view class="tab-item t-FB1 {{userType == 7 ? 'active':''}}" data-active="7" bindtap='onChangeTab' wx:if="{{myUserType > 7 }}">
