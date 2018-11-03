@@ -6,7 +6,8 @@
   right:0;
   bottom: 0;
   background-color: rgba(0,0,0,0.6);
-  z-index: 2
+  z-index: 2;
+  display: none;
 }
 .filters {
   position:absolute;
@@ -42,7 +43,11 @@
    border-right:1px solid #f2f2f2;
   }
 .show {
+  display: block;
   top: 88rpx;
+}
+.filters {
+  top: 0;
 }
 .filterArea {
   flex: 1;

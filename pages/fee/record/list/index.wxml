@@ -12,7 +12,7 @@
       </view> 
        <view class="filterItem t-FB1">
         <view class="picker" bindtap="showPopup">
-          <text>筛选</text>
+          <text class="{{(selectedPay != null || date) ? 'changeColor' : ''}}">筛选</text>
           <image src="../../../../images/filter.png"></image>
         </view>
         <filter 

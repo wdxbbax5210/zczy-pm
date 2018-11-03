@@ -303,6 +303,9 @@
 .container .feed-item .feed-content .answer-actions .dot ::after {
   content: "•";
 }
-.show .filters {
+/* .show .filters {
   top: 88rpx!important;
+} */
+.changeColor {
+  color: #38ADFF
 }

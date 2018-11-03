@@ -10,7 +10,7 @@ Page({
     tabs: [],
     tabIndex: 0,
     tabSelected: 0,
-    selectedPay: 0,
+    selectedPay: null,
     index: 0,
     // array: [{
     //   key: null,

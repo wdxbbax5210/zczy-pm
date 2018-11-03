@@ -25,7 +25,7 @@
         </view>
       </view>
       <view class="input-wrap">
-        <wxc-input type="number" mode="none" title="应收金额" placeholder="请输入应收金额" value="{{amount}}" bindinput='onAmountChange'></wxc-input>
+        <wxc-input type="text" mode="none" title="应收金额" placeholder="请输入应收金额" value="{{amount}}" bindinput='onAmountChange'></wxc-input>
       </view>
       <!-- <view class="save" bindtap="onConfirm">保存</view> -->
        <view class="button-large-wrap"> 

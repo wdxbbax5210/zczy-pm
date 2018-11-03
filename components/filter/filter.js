@@ -39,7 +39,10 @@ Component({
     confirmFilter: function () {
       this.triggerEvent('confirmFilter', {
         activeKey: this.data.activeKey,
-        date: this.data.date
+        date: this.data.date,
+      })
+      this.setData({
+        activeTab: 'feeStatus'
       })
     },
     handleSelect: function(e){

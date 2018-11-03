@@ -131,6 +131,11 @@ Page({
       this.showToast('应收金额必须输入！');
       return;
     }
+    //浮点数 含0
+    if (!/^(0|[+-]?((0|([1-9]\d*))\.\d+)?)$/.test(this.data.amount)) {
+      this.showToast('应收金额格式错误！');
+      return;
+    }
     if (!this.data.date) {
       this.showToast('所属月份必须选择！');
       return;
