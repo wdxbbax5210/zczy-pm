@@ -11,11 +11,11 @@ Page({
       key: 0,
       name: '编辑'
     }, {
-      key: 1,
-      name: '删除'
-    }, {
       key: 2,
       name: '编辑单元编号'
+    }, {
+      key: 1,
+      name: '退租'
     }],
     page: 1,
     pageSize: 10,
