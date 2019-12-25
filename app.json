@@ -20,13 +20,14 @@
     "pages/fee/record/ticket/index",
     "pages/company/unit/list/index",
     "pages/company/unit/add/index",
-    "pages/fee/record/owner/index"
+    "pages/fee/record/owner/index",
+    "pages/out/out"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#38ADFF",
     "navigationBarTitleText": "物业管理",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#cdcdcd",
@@ -48,5 +49,6 @@
       }
     ]
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

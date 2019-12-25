@@ -27,7 +27,7 @@
       <view wx:if="{{showCompanyManageIcon}}">租户企业</view>
     </view>
   </view>
-  
+  <view class='recordNumber' bindtap='goCheck'>沪ICP备18028154号-1</view>
   <wxc-dialog class="wxc-dialog unknow-user-type" 
     title="注册信息" content="物业管理申请获取您的昵称信息" 
     confirm-text="点击注册" cancel-text="取消" 

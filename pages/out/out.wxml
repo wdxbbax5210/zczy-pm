@@ -1,0 +1,2 @@
+<!--pages/out/out.wxml-->
+<web-view src="http://www.beian.miit.gov.cn/"></web-view>
